@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Github, Linkedin, Clock } from "lucide-react"
-import Image from "next/image"
+
 import HeroCarousel from "@/components/hero-carousel";
 
 export function HeroSection() {
@@ -49,19 +49,15 @@ export function HeroSection() {
             <span>{formatTime(currentTime)}</span>
           </motion.div>
 
-          <div className="relative">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20">
-              <HeroCarousel
-                images={[
-                  "/images/hero/hero-1.jpg",
-                  "/images/hero/hero-2.jpeg",
-                ]}
-                intervalMs={5000} // change timing if you want
-                aspect="[--hero-h:38rem] h-[var(--hero-h)] md:h-[calc(var(--hero-h)+4rem)]"
-              />
+          <HeroCarousel
+            images={[
+              "/images/hero/hero-1.jpg",
+              "/images/hero/hero-2.jpeg",
+            ]}
+            intervalMs={5000}
+            aspect="[--hero-h:28rem] h-[var(--hero-h)] md:h-[36rem]"
+          />
 
-            </div>
-          </div>
 
           <div className="space-y-4">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight hover-underline-animation">
