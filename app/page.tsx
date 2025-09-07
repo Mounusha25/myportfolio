@@ -11,7 +11,7 @@ import { CertificationCard } from "@/components/certification-card"
 import { FloatingSkillsBubble } from "@/components/floating-skills-bubble"
 import { ColorDripBackground } from "@/components/color-drip-background"
 import { experiences, education, skillGroups, publications, allProjects, awards, certifications } from "@/lib/content"
-// Made a change
+
 export default function HomePage() {
   const featuredProjects = allProjects.filter((project) => project.featured)
 
