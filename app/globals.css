@@ -1,0 +1,542 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.75rem;
+    --gradient-from: #2196f3;
+    --gradient-to: #00ffff;
+    --brand-gradient: linear-gradient(135deg, #2196f3, #00ffff);
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 207 90% 54%; /* Neon blue instead of pink */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 180 100% 50%; /* Cyan from gradient */
+    --brand-gradient: linear-gradient(135deg, #2196f3, #00ffff);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar with gradient theme */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #2196f3, #4ecdc4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #1976d2, #26c6da);
+  opacity: 0.9;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles with gradient theme */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background;
+  --tw-ring-color: #4ecdc4;
+}
+
+/* Holographic Card Effect */
+.holographic-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+}
+
+.holographic-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(33, 150, 243, 0.1),
+    rgba(0, 255, 255, 0.2),
+    rgba(33, 150, 243, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.holographic-card:hover {
+  transform: scale(1.05) translateZ(0);
+  box-shadow: 0 0 20px rgba(33, 150, 243, 0.4), 0 0 40px rgba(0, 255, 255, 0.2), 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.holographic-card:hover::before {
+  left: 100%;
+}
+
+/* Enhanced holographic effect for special cards */
+.holographic-card-enhanced {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+}
+
+.holographic-card-enhanced::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(33, 150, 243, 0.15),
+    rgba(0, 255, 255, 0.25),
+    rgba(33, 150, 243, 0.15),
+    transparent
+  );
+  transition: left 0.5s ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.holographic-card-enhanced::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(33, 150, 243, 0.05) 50%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.holographic-card-enhanced:hover {
+  transform: scale(1.05) translateZ(0);
+  box-shadow: 0 0 25px rgba(33, 150, 243, 0.5), 0 0 50px rgba(0, 255, 255, 0.3), 0 15px 35px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(33, 150, 243, 0.4);
+}
+
+.holographic-card-enhanced:hover::before {
+  left: 100%;
+}
+
+.holographic-card-enhanced:hover::after {
+  opacity: 1;
+}
+
+/* Ensure card content stays above the holographic effects */
+.holographic-card > *,
+.holographic-card-enhanced > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Creative Navigation Link Hover Animation */
+.nav-link {
+  @apply relative inline-block px-3 py-2 text-sm font-medium transition-colors duration-300 ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before,
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Border lines (top and bottom) */
+.nav-link::before {
+  top: 0;
+  bottom: 0;
+  background: var(--brand-gradient);
+  transform: scaleY(0);
+  transform-origin: center;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* Background gradient */
+.nav-link::after {
+  top: 0;
+  bottom: 0;
+  background: var(--brand-gradient);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.nav-link:hover::before {
+  transform: scaleY(1);
+  opacity: 1;
+  box-shadow: inset 0 2px 0 0 #2196f3, inset 0 -2px 0 0 #00ffff;
+  background: transparent;
+}
+
+.nav-link:hover::after {
+  transform: scaleY(1);
+  opacity: 0.15;
+}
+
+.nav-link:hover {
+  color: hsl(var(--foreground));
+  text-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+}
+
+/* Focus states for accessibility */
+.nav-link:focus-visible {
+  outline: 2px solid #2196f3;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .nav-link::before,
+  .nav-link::after {
+    transition: none;
+  }
+
+  .nav-link:hover {
+    text-shadow: none;
+  }
+
+  .holographic-card,
+  .holographic-card-enhanced {
+    transition: none;
+  }
+
+  .holographic-card::before,
+  .holographic-card-enhanced::before,
+  .holographic-card-enhanced::after {
+    transition: none;
+  }
+
+  .holographic-card:hover,
+  .holographic-card-enhanced:hover {
+    transform: none;
+  }
+}
+
+/* Mobile nav link adjustments */
+@media (max-width: 768px) {
+  .nav-link {
+    @apply px-4 py-3 text-base;
+    display: block;
+    width: 100%;
+  }
+
+  .nav-link::after {
+    border-radius: 4px;
+  }
+}
+
+/* Hover Underline Animation */
+.hover-underline-animation {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hover-underline-animation::before,
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #2196f3, #4ecdc4);
+  transition: width 0.4s ease-out;
+}
+
+.hover-underline-animation::before {
+  top: -4px;
+}
+
+.hover-underline-animation::after {
+  bottom: -4px;
+}
+
+.hover-underline-animation:hover::before,
+.hover-underline-animation:hover::after {
+  width: 100%;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(to right, #2196f3, #4ecdc4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+/* Gradient border utility */
+.gradient-border {
+  border: 2px solid transparent;
+  background: linear-gradient(var(--tw-gradient-angle, 0deg), var(--tw-gradient-stops)) border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* Gradient button hover effect */
+.gradient-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.2), rgba(78, 205, 196, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.gradient-hover:hover::before {
+  left: 100%;
+}
+
+/* Social Media Hover Animations */
+.social-icon {
+  @apply relative overflow-hidden rounded-full border-2 border-muted-foreground/20 bg-background transition-all duration-300 ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.social-icon::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: top 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.social-icon:hover::before {
+  top: 0;
+}
+
+.social-icon .icon {
+  @apply relative z-10 transition-all duration-300 ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.social-icon:hover .icon {
+  transform: rotateY(360deg);
+  color: white !important;
+  filter: brightness(0) invert(1);
+}
+
+/* Platform-specific colors */
+.social-icon.github::before {
+  background: #333;
+}
+
+.social-icon.linkedin::before {
+  background: #0077b5;
+}
+
+.social-icon.medium::before {
+  background: #00ab6c;
+}
+
+.social-icon.leetcode::before {
+  background: #ffa116;
+}
+
+.social-icon.email::before {
+  background: #ea4335;
+}
+
+/* Default icon colors */
+.social-icon.github .icon {
+  color: #333;
+}
+
+.social-icon.linkedin .icon {
+  color: #0077b5;
+}
+
+.social-icon.medium .icon {
+  color: #00ab6c;
+}
+
+.social-icon.leetcode .icon {
+  color: #ffa116;
+}
+
+.social-icon.email .icon {
+  color: #ea4335;
+}
+
+/* Hero section social buttons with text */
+.hero-social-btn {
+  @apply relative overflow-hidden rounded-full border-2 border-muted-foreground/20 bg-background transition-all duration-300 ease-in-out px-4 py-2 flex items-center gap-2;
+  transform-style: preserve-3d;
+}
+
+.hero-social-btn::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  transition: top 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.hero-social-btn:hover::before {
+  top: 0;
+}
+
+.hero-social-btn .icon,
+.hero-social-btn .text {
+  @apply relative z-10 transition-all duration-300 ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.hero-social-btn:hover .icon {
+  transform: rotateY(360deg);
+  color: white !important;
+  filter: brightness(0) invert(1);
+}
+
+.hero-social-btn:hover .text {
+  color: white !important;
+}
+
+/* Hero platform-specific colors */
+.hero-social-btn.github::before {
+  background: #333;
+}
+
+.hero-social-btn.linkedin::before {
+  background: #0077b5;
+}
+
+.hero-social-btn.medium::before {
+  background: #00ab6c;
+}
+
+.hero-social-btn.leetcode::before {
+  background: #ffa116;
+}
+
+/* Hero default colors */
+.hero-social-btn.github .icon,
+.hero-social-btn.github .text {
+  color: #333;
+}
+
+.hero-social-btn.linkedin .icon,
+.hero-social-btn.linkedin .text {
+  color: #0077b5;
+}
+
+.hero-social-btn.medium .icon,
+.hero-social-btn.medium .text {
+  color: #00ab6c;
+}
+
+.hero-social-btn.leetcode .icon,
+.hero-social-btn.leetcode .text {
+  color: #ffa116;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .hover-underline-animation::before,
+  .hover-underline-animation::after {
+    height: 1.5px;
+  }
+
+  .hover-underline-animation::before {
+    top: -3px;
+  }
+
+  .hover-underline-animation::after {
+    bottom: -3px;
+  }
+
+  /* Reduce holographic effects on mobile for performance */
+  .holographic-card:hover,
+  .holographic-card-enhanced:hover {
+    transform: scale(1.02) translateZ(0);
+  }
+}
