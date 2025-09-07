@@ -49,14 +49,19 @@ export function HeroSection() {
             <span>{formatTime(currentTime)}</span>
           </motion.div>
 
-          <HeroCarousel
-            images={[
-              "/images/hero/hero1.jpg",
-              "/images/hero/hero2.jpeg",
-            ]}
-            intervalMs={5000}
-            aspect="[--hero-h:28rem] h-[var(--hero-h)] md:h-[36rem]"
-          />
+          <div className="relative">
+            {/* Mini fixed box (about 20rem x 12rem). Adjust as you like. */}
+            <div className="w-80 h-48 md:w-[28rem] md:h-64 rounded-2xl overflow-hidden border-4 border-primary/20">
+              <HeroCarousel
+                images={[
+                  "/images/hero/hero-1.jpg",
+                  "/images/hero/hero-2.jpeg", // change to .jpg if that's your actual file
+                ]}
+                intervalMs={4000}
+                aspect="h-full"   // fill the fixed-size parent
+              />
+            </div>
+          </div>
 
 
           <div className="space-y-4">
