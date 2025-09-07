@@ -54,8 +54,8 @@ export function HeroSection() {
             <div className="w-80 h-48 md:w-[28rem] md:h-64 rounded-2xl overflow-hidden border-4 border-primary/20">
               <HeroCarousel
                 images={[
-                  "/images/hero/hero-1.jpg",
-                  "/images/hero/hero-2.jpeg", // change to .jpg if that's your actual file
+                  "/images/hero/hero1.jpg",
+                  "/images/hero/hero2.jpeg", // change to .jpg if that's your actual file
                 ]}
                 intervalMs={4000}
                 aspect="h-full"   // fill the fixed-size parent
