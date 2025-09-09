@@ -210,25 +210,30 @@ export const education: Education[] = [
 export const skillGroups: SkillGroup[] = [
   {
     category: "Programming & Query Languages",
-    skills: ["Python", "R", "Java", "SQL"],
+    skills: ["Python", "R", "Java", "SQL", "Julia", "C", "C++", "Git"],
   },
   {
     category: "Databases",
-    skills: ["MySQL", "PostgreSQL", "SQL Server", "SQLite"],
+    skills: ["MySQL", "PostgreSQL", "SQL Server", "SQLite", "Databricks", "PySpark"],
   },
   {
     category: "Analytics & Visualization",
-    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Power BI", "Excel"],
+    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Power BI", "Tableau", "Excel", "Streamlit"],
   },
   {
     category: "Applied Statistics",
     skills: ["Hypothesis Testing", "Regression Analysis", "Causal Inference", "Time Series Forecasting"],
   },
   {
-    category: "Machine Learning",
-    skills: ["Predictive Modeling", "Deep Learning", "NLP", "Anomaly Detection", "Classification Modeling"],
+    category: "Machine Learning & AI",
+    skills: ["Predictive Modeling", "NLP", "Anomaly Detection", "Gradient Boosted Models", "PyTorch"],
+  },
+  {
+    category: "Frameworks & Automation",
+    skills: ["CPLEX", "n8n Workflows", "Apache Airflow", "Docker", "MLflow"],
   },
 ]
+
 
 export const publications: Publication[] = [
   {

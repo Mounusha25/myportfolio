@@ -35,10 +35,20 @@ const skillsData: SkillData[] = [
   },
   { name: "Java", category: "programming", connections: ["SQL", "Classification"] },
   { name: "SQL", category: "programming", connections: ["MySQL", "PostgreSQL", "Data Mining", "Java"] },
+  { name: "Julia", category: "programming", connections: ["Python", "NumPy", "Pandas"] },
+  { name: "C", category: "programming", connections: ["C++", "Algorithms"] },
+  { name: "C++", category: "programming", connections: ["C", "Algorithms"] },
+  { name: "Git", category: "programming", connections: ["CI/CD", "Docker"] },
+
 
   // Databases
   { name: "MySQL", category: "database", connections: ["SQL", "PostgreSQL", "Data Mining"] },
   { name: "PostgreSQL", category: "database", connections: ["SQL", "MySQL", "Python"] },
+  { name: "SQL Server", category: "database", connections: ["SQL"] },
+  { name: "SQLite", category: "database", connections: ["SQL"] },
+  { name: "Databricks", category: "database", connections: ["PySpark", "SQL"] },
+  { name: "PySpark", category: "database", connections: ["Databricks", "SQL"] },
+
 
   // Analytics & Visualization
   { name: "Pandas", category: "analytics", connections: ["Python", "NumPy", "Data Mining", "Statistics"] },
@@ -47,6 +57,9 @@ const skillsData: SkillData[] = [
   { name: "Seaborn", category: "visualization", connections: ["Python", "Matplotlib", "Statistics", "Regression"] },
   { name: "Power BI", category: "visualization", connections: ["Excel", "SQL"] },
   { name: "Excel", category: "analytics", connections: ["Power BI", "Statistics"] },
+  { name: "Tableau", category: "visualization", connections: ["SQL", "Excel"] },
+  { name: "Streamlit", category: "analytics", connections: ["Python", "Pandas", "NumPy"] },
+
 
   // Statistics
   {
@@ -70,21 +83,31 @@ const skillsData: SkillData[] = [
   { name: "Predictive Modeling", category: "ml", connections: ["Machine Learning", "Time Series", "Python"] },
   { name: "Classification", category: "ml", connections: ["Machine Learning", "Java", "Anomaly Detection"] },
   { name: "Anomaly Detection", category: "ml", connections: ["Machine Learning", "Classification"] },
+  { name: "Gradient Boosted Models", category: "ml", connections: ["Predictive Modeling"] },  
+  { name: "PyTorch", category: "ml", connections: ["Deep Learning", "NLP"] },
+
 
   // Data Processing
   { name: "Data Mining", category: "data", connections: ["SQL", "Python", "Pandas", "MySQL"] },
+  { name: "CPLEX", category: "data", connections: ["Optimization", "Python"] },
+  { name: "n8n Workflows", category: "data", connections: ["APIs", "Automation"] },
+  { name: "Apache Airflow", category: "data", connections: ["ETL", "Scheduling", "Python"] },
+  { name: "Docker", category: "data", connections: ["DevOps", "MLflow"] },
+  { name: "MLflow", category: "data", connections: ["MLOps", "PyTorch"] },
+
 ]
 
 // Updated neon color palette with neon blue theme
 const categoryColors = {
-  programming: "#2196f3", // Neon blue instead of pink
-  database: "#ff5722", // Neon orange-red
-  analytics: "#ff9800", // Neon orange
-  visualization: "#ffc107", // Neon amber
-  statistics: "#8bc34a", // Neon light green
-  ml: "#9c27b0", // Neon purple
-  data: "#00bcd4", // Neon cyan
+  programming: "#2196f3",
+  database: "#ff5722",
+  analytics: "#ff9800",
+  visualization: "#ffc107",
+  statistics: "#8bc34a",
+  ml: "#9c27b0",
+  data: "#00bcd4",
 }
+
 
 export function FloatingSkillsBubble() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
