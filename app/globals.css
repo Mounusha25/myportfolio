@@ -399,7 +399,7 @@ html {
 
 /* Platform-specific colors */
 .social-icon.github::before {
-  background: #333;
+  background: #070707;
 }
 
 .social-icon.linkedin::before {
@@ -420,7 +420,7 @@ html {
 
 /* Default icon colors */
 .social-icon.github .icon {
-  color: #333;
+  color: #ffffff;
 }
 
 .social-icon.linkedin .icon {
@@ -479,7 +479,7 @@ html {
 
 /* Hero platform-specific colors */
 .hero-social-btn.github::before {
-  background: #333;
+  background: #000000;
 }
 
 .hero-social-btn.linkedin::before {
@@ -497,7 +497,7 @@ html {
 /* Hero default colors */
 .hero-social-btn.github .icon,
 .hero-social-btn.github .text {
-  color: #333;
+  color: #ffffff;
 }
 
 .hero-social-btn.linkedin .icon,
