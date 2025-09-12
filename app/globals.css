@@ -30,38 +30,22 @@
   }
 
   .dark {
-  /* Background & text */
-  --background: 0 0% 0%;         /* true black */
+  --background: 0 0% 0%;
   --foreground: 0 0% 98%;
-
-  /* Cards / popovers */
-  --card: 0 0% 6%;               /* near-black surface */
-  --card-foreground: 0 0% 96%;
-  --popover: 0 0% 6%;
-  --popover-foreground: 0 0% 96%;
-
-  /* Primary emerald */
-  --primary: 160 84% 39%;        /* Tailwind emerald-500 in HSL */
+  --card: 0 0% 6%;
+  --card-foreground: 0 0% 98%;
+  --primary: 160 84% 39%;
   --primary-foreground: 0 0% 98%;
-
-  /* Muted / Accent subtle grays (keep neutral so emerald pops) */
   --secondary: 0 0% 12%;
   --secondary-foreground: 0 0% 96%;
-  --muted: 0 0% 12%;
-  --muted-foreground: 0 0% 70%;
+  --muted: 0 0% 14%;
+  --muted-foreground: 0 0% 72%;
   --accent: 0 0% 12%;
   --accent-foreground: 0 0% 96%;
-
-  /* Status & borders */
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 14.9%;
-  --input: 0 0% 14.9%;
-
-  /* Focus ring & brand gradient */
-  --ring: 160 84% 39%; /* emerald */
-  --brand-gradient: linear-gradient(135deg, #10b981, #34d399);
+  --border: 0 0% 18%;
+  --ring: 160 84% 39%;
 }
+
 
 }
 
@@ -550,5 +534,37 @@ html {
   .holographic-card:hover,
   .holographic-card-enhanced:hover {
     transform: scale(1.02) translateZ(0);
+  }
+
+}
+
+/* ===== Glassmorphism utility ===== */
+.glass {
+  @apply relative overflow-hidden rounded-2xl border backdrop-blur-xl bg-white/5 dark:bg-white/5 border-white/10 dark:border-white/10;
+}
+
+/* soft inner glow that matches the emerald theme */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(16,185,129,.16), transparent 35%) ,
+    linear-gradient(315deg, rgba(52,211,153,.10), transparent 40%);
+}
+
+/* hover “lift” for interactive glass cards */
+.glass-hover {
+  @apply transition-transform duration-300 ease-out will-change-transform;
+}
+.glass-hover:hover {
+  @apply -translate-y-0.5;
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .glass {
+    background-color: rgba(255,255,255,0.06);
   }
 }
