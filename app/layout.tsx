@@ -29,25 +29,35 @@ export const metadata: Metadata = {
     generator: 'v0.app'
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {/* Emerald Depths wrapper */}
           <div className="min-h-screen w-full relative bg-black">
+            {/* Emerald Depths radial glow (keep this) */}
             <div
               className="absolute inset-0 z-0"
               style={{
                 background:
-                  "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(16, 185, 129, 0.25), transparent 70%), #000000",
+                  "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(16,185,129,0.25), transparent 70%), #000000",
               }}
             />
-            {/* App content above the background */}
+
+            {/* ✅ Waves (bottom). Optional: duplicate with `emerald-waves-top` for top waves */}
+            <div className="emerald-waves">
+              <div className="emerald-wave"></div>
+              <div className="emerald-wave"></div>
+              <div className="emerald-wave"></div>
+            </div>
+            {/* Optional top waves:
+            <div className="emerald-waves-top">
+              <div className="emerald-wave"></div>
+              <div className="emerald-wave"></div>
+              <div className="emerald-wave"></div>
+            </div> */}
+
+            {/* App content above everything */}
             <div className="relative z-10">
               <Header />
               <main>{children}</main>
@@ -59,3 +69,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+
