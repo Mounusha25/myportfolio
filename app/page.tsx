@@ -9,7 +9,7 @@ import { ContactCard } from "@/components/contact-card"
 import { AwardCard } from "@/components/award-card"
 import { CertificationCard } from "@/components/certification-card"
 import { FloatingSkillsBubble } from "@/components/floating-skills-bubble"
-import { ColorDripBackground } from "@/components/color-drip-background"
+
 import { experiences, education, skillGroups, publications, allProjects, awards, certifications } from "@/lib/content"
 
 export default function HomePage() {
@@ -17,9 +17,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen relative" id="top">
-      {/* Color Drip Background */}
-      <ColorDripBackground />
-
+      
       {/* Hero Section */}
       <HeroSection />
 

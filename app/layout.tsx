@@ -38,11 +38,26 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          {/* Emerald Depths wrapper */}
+          <div className="min-h-screen w-full relative bg-black">
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(16, 185, 129, 0.25), transparent 70%), #000000",
+              }}
+            />
+            {/* App content above the background */}
+            <div className="relative z-10">
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
   )
 }
+
+
