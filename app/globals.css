@@ -569,55 +569,45 @@ html {
   }
 }
 
-/* === Emerald Depths Waves === */
-@layer utilities {
-  .emerald-waves,
-  .emerald-waves-top {
-    position: absolute;
-    left: 0; right: 0;
-    pointer-events: none;
-    z-index: 5;               /* above the radial bg (z-0), below content (z-10) */
-  }
-  .emerald-waves { bottom: 0; height: 12rem; }
-  .emerald-waves-top { top: 0; height: 10rem; transform: rotate(180deg); }
+/* === Emerald Depths Waves (section-scoped) === */
+.section-with-waves { position: relative; overflow: hidden; }
 
-  .emerald-wave {
-    position: absolute;
-    left: 0; bottom: 0;
-    width: 200%;
-    height: 12em;
-    border-radius: 1000% 1000% 0 0;
-    /* Subtle emerald tinted glass */
-    background: linear-gradient(
-      to bottom,
-      rgba(16,185,129,0.22),
-      rgba(16,185,129,0.08)
-    );
-    transform: translate3d(0,0,0);
-    opacity: 0.28;
-    animation: emerald-wave 12s -3s linear infinite;
-  }
-  .emerald-wave:nth-child(2) {
-    bottom: -1.25em;
-    animation: emerald-wave 18s linear reverse infinite;
-    opacity: 0.22;
-  }
-  .emerald-wave:nth-child(3) {
-    bottom: -2.5em;
-    animation: emerald-wave 22s -1s reverse infinite;
-    opacity: 0.18;
-  }
-
-  @keyframes emerald-wave {
-    0%   { transform: translateX(0); }
-    25%  { transform: translateX(-25%); }
-    50%  { transform: translateX(-50%); }
-    75%  { transform: translateX(-25%); }
-    100% { transform: translateX(0); }
-  }
-
-  /* Respect reduced-motion */
-  @media (prefers-reduced-motion: reduce) {
-    .emerald-wave { animation: none; }
-  }
+.emerald-waves,
+.emerald-waves-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 0; /* content will sit above */
 }
+
+.emerald-waves     { bottom: 0; height: 10rem; }
+.emerald-waves-top { top: 0; height: 10rem; transform: rotate(180deg); }
+
+.emerald-wave {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 200%;
+  height: 10em;
+  border-radius: 1000% 1000% 0 0;
+  background: linear-gradient(to bottom, rgba(16,185,129,.22), rgba(16,185,129,.08));
+  transform: translate3d(0,0,0);
+  opacity: .26;
+  animation: emerald-wave 12s -3s linear infinite;
+}
+.emerald-wave:nth-child(2) { bottom: -1.1em; animation: emerald-wave 18s linear reverse infinite; opacity: .2; }
+.emerald-wave:nth-child(3) { bottom: -2.2em; animation: emerald-wave 22s -1s reverse infinite;  opacity: .16; }
+
+@keyframes emerald-wave {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-25%); }
+  50% { transform: translateX(-50%); }
+  75% { transform: translateX(-25%); }
+  100% { transform: translateX(0); }
+}
+
+/* optional per-section height control; e.g., add class `waves-tall` on a section */
+.waves-tall .emerald-waves,
+.waves-tall .emerald-waves-top { height: 14rem; }
+.waves-short .emerald-waves,
+.waves-short .emerald-waves-top { height: 8rem; }

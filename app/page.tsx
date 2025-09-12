@@ -1,6 +1,5 @@
 "use client"
 import { HeroSection } from "@/components/hero-section"
-import { ProjectCard } from "@/components/project-card"
 import { ExperienceCard } from "@/components/experience-card"
 import { EducationCard } from "@/components/education-card"
 import { SkillCard } from "@/components/skill-card"
@@ -10,20 +9,30 @@ import { AwardCard } from "@/components/award-card"
 import { CertificationCard } from "@/components/certification-card"
 import { FloatingSkillsBubble } from "@/components/floating-skills-bubble"
 import ProjectCarousel from "@/components/ProjectCarousel"
+import WavySection from "@/components/WavySection"
 
-import { experiences, education, skillGroups, publications, allProjects, awards, certifications } from "@/lib/content"
+import {
+  experiences,
+  education,
+  skillGroups,
+  publications,
+  allProjects,
+  awards,
+  certifications,
+} from "@/lib/content"
 
 export default function HomePage() {
   const featuredProjects = allProjects.filter((project) => project.featured)
 
   return (
     <div className="min-h-screen relative" id="top">
-      
-      {/* Hero Section */}
-      <HeroSection />
+      {/* Hero */}
+      <WavySection id="home" bottom>
+        <HeroSection />
+      </WavySection>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-16 relative">
+      {/* Skills */}
+      <WavySection id="skills" top bottom>
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Skills</h2>
@@ -33,15 +42,14 @@ export default function HomePage() {
               <SkillCard key={skillGroup.category} skillGroup={skillGroup} index={index} />
             ))}
           </div>
-          {/* Add the floating skills visualization */}
           <div className="mt-12 max-w-4xl mx-auto">
             <FloatingSkillsBubble />
           </div>
         </div>
-      </section>
+      </WavySection>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-16 bg-muted/30 relative">
+      {/* Experience */}
+      <WavySection id="experience" top bottom className="bg-emerald-500/5">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Experience</h2>
@@ -56,20 +64,20 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </WavySection>
 
       {/* Featured Projects */}
-      <section id="projects" className="py-16 relative">
+      <WavySection id="projects" top bottom>
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Featured Projects</h2>
           </div>
           <ProjectCarousel projects={featuredProjects} />
         </div>
-      </section>
+      </WavySection>
 
-      {/* Education Section */}
-      <section id="education" className="py-16 bg-muted/30 relative">
+      {/* Education */}
+      <WavySection id="education" top bottom className="bg-emerald-500/5">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Education</h2>
@@ -80,10 +88,10 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </WavySection>
 
-      {/* Awards & Recognition */}
-      <section id="awards" className="py-16 relative">
+      {/* Awards */}
+      <WavySection id="awards" top bottom>
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Awards & Recognition</h2>
@@ -94,10 +102,10 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </WavySection>
 
-      {/* Publications Section */}
-      <section id="publications" className="py-16 bg-muted/30 relative">
+      {/* Publications */}
+      <WavySection id="publications" top bottom className="bg-emerald-500/5">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Publications</h2>
@@ -108,10 +116,10 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </WavySection>
 
-      {/* Certifications Section */}
-      <section id="certifications" className="py-16 relative">
+      {/* Certifications */}
+      <WavySection id="certifications" top bottom>
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Certifications</h2>
@@ -126,17 +134,17 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </WavySection>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-16 bg-muted/30 relative">
+      {/* Contact */}
+      <WavySection id="contact" top className="bg-emerald-500/5">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Contact</h2>
           </div>
           <ContactCard />
         </div>
-      </section>
+      </WavySection>
     </div>
   )
 }

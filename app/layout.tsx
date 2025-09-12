@@ -45,11 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             />
 
             {/* ✅ Waves (bottom). Optional: duplicate with `emerald-waves-top` for top waves */}
-            <div className="emerald-waves">
-              <div className="emerald-wave"></div>
-              <div className="emerald-wave"></div>
-              <div className="emerald-wave"></div>
-            </div>
+           
             {/* Optional top waves:
             <div className="emerald-waves-top">
               <div className="emerald-wave"></div>
