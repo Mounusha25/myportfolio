@@ -54,7 +54,7 @@ export function HeroSection() {
           <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden border border-neutral-900 shadow-lg">
             <HeroCarousel
               images={[
-                "/images/hero/hero1.jpg",   // make sure these filenames/extensions match
+                  // make sure these filenames/extensions match
                 "/images/hero/hero2.jpeg",
               ]}
               intervalMs={4000}
