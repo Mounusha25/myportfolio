@@ -69,7 +69,7 @@ export const allProjects: Project[] = [
     slug: "ai-travel-planner",
     title: "AI Travel Itinerary Planner",
     description:
-      "Engineered an AI-driven platform that generates optimized multi-day travel itineraries with real-time route refinement. Integrated cost estimation, weather forecasts, and interactive map visualizations, improving planning accuracy by 30%.",
+      "Engineered an AI-driven platform that generates optimized multi-day travel itineraries with real-time route refinement. Integrated cost estimation, weather forecasts, and interactive map visualizations, improving planning accuracy by 30%. Won People's choice Award for this project at Hackazona v0.1.",
     tech: ["Streamlit", "Groq LLaMA", "Python"],
     tags: ["AI", "Travel", "Optimization"],
     github: "https://github.com/VishalLakshmiNarayanan/Zoro",
@@ -81,7 +81,7 @@ export const allProjects: Project[] = [
     slug: "path2pro",
     title: "Path2Pro – AI Job Portal",
     description:
-      "Built an AI job-matching portal with semantic similarity scoring and automated resume parsing for 100+ applications. Developed secure recruiter/applicant dashboards with authentication, job posting, and real-time resume uploads. Won the People's Choice Award at HackAZona v0.1.",
+      "Built an AI job-matching portal with semantic similarity scoring and automated resume parsing for 100+ applications. Developed secure recruiter/applicant dashboards with authentication, job posting, and real-time resume uploads.",
     tech: ["Python", "Streamlit", "SentenceTransformers", "SQLite"],
     tags: ["NLP", "Job Matching", "AI"],
     github: "https://github.com/VishalLakshmiNarayanan/AFK-coders",
