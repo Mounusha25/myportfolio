@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Github, Linkedin, Clock } from "lucide-react"
+import GlassFlipper from "@/components/GlassFlipper"
+
 
 import HeroCarousel from "@/components/hero-carousel";
 
@@ -69,7 +71,10 @@ export function HeroSection() {
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight hover-underline-animation">
               Vishal Lakshmi Narayanan
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">Data Science Graduate Student @ ASU | Hackazona v0.1 Winner</p>
+            <div className="mt-3">
+              <GlassFlipper />
+            </div>
+
             <p className="text-lg text-muted-foreground max-w-4xl leading-relaxed hover-underline-animation">
               I'm a graduate student in Data Science, Analytics & Engineering at Arizona State University, with a strong
               foundation in machine learning, NLP, applied statistics, and data-driven problem solving. My experience
