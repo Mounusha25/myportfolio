@@ -322,7 +322,7 @@ export const heroStats = [
   {
     id: "projects",
     label: "Projects",
-    rolling: ["17 Total", "9 Featured"], // rolls between these
+    rolling: ["17", "9"], // rolls between these
   },
   {
     id: "hackathons",
@@ -331,18 +331,18 @@ export const heroStats = [
   },
   {
     id: "linkedin",
-    label: "LinkedIn Followers",
+    label: "Followers",
     value: "1300+",
   },
   {
     id: "stack",
-    label: "Tech Stack Expertise",
+    label: "Tech Stack",
     value: "28",
     suffix: "Tools & Frameworks",
   },
   {
     id: "domains",
-    label: "Domains of Impact",
+    label: "Domains",
     value: "5",
   },
 ] as const;
