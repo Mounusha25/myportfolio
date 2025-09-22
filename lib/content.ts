@@ -66,6 +66,19 @@ export interface Certification {
 
 export const allProjects: Project[] = [
   {
+  slug: "slidesage-ai",
+  title: "SlideSage AI",
+  description:
+    "An AI-powered learning assistant that transforms dense concepts into short, dialogue-based explainer videos with quizzes, streaks, and badges. If a student doesn’t understand a concept the first time, SlideSage instantly regenerates with fresh analogies or examples until it clicks — making learning adaptive, fun, and addictive.",
+  tech: ["Next.js", "TailwindCSS", "shadcn/ui", "Groq", "Pexels API", "TypeScript", "Vercel"],
+  tags: ["AI", "EdTech", "Video"],
+  github: "https://github.com/VishalLakshmiNarayanan/SlideSage-v3",
+  demo: "https://slidesageai.vercel.app/",          // <- your “Visit Website” link
+  date: "2025-09-01",
+  featured: true,                                   // <- ensures it appears in the carousel
+  image: "/images/projects/slidesage.png",
+}
+  {
     slug: "ai-travel-planner",
     title: "AI Travel Itinerary Planner",
     description:

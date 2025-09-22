@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github } from "lucide-react"
+import { Github,ExternalLink } from "lucide-react"
 import Image from "next/image"
 import type { Project } from "@/lib/content"
 
@@ -79,6 +79,15 @@ export function ProjectCard({ project, index = 0, active = false, animated = fal
             </a>
           </Button>
         )}
+        
+{project.demo && (
+  <Button asChild size="sm" variant="secondary" className="w-full">
+    <a href={project.demo} target="_blank" rel="noopener noreferrer">
+      <ExternalLink className="mr-2 h-4 w-4" />
+      Visit Website
+    </a>
+  </Button>
+)}
       </CardContent>
     </Card>
   )
