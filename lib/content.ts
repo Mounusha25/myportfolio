@@ -317,32 +317,10 @@ export const certifications: Certification[] = [
   },
 ]
 
-// lib/content.ts
 export const heroStats = [
-  {
-    id: "projects",
-    label: "Projects",
-    rolling: ["17", "9"], // rolls between these
-  },
-  {
-    id: "hackathons",
-    label: "Hackathon Wins",
-    value: "3",
-  },
-  {
-    id: "linkedin",
-    label: "Followers",
-    value: "1300+",
-  },
-  {
-    id: "stack",
-    label: "Tech Stack",
-    value: "28",
-    suffix: "Tools & Frameworks",
-  },
-  {
-    id: "domains",
-    label: "Domains",
-    value: "5",
-  },
+  { id: "projects",  label: "Projects",       rolling: ["17", "9"] }, // glow on 9
+  { id: "hackathons",label: "Hackathon Wins", value: "3" },
+  { id: "linkedin",  label: "Followers",      value: "1300+" },
+  { id: "stack",     label: "Tech Stack",     value: "28" },
+  { id: "domains",   label: "Domains",        value: "5" },
 ] as const;
