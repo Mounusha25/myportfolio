@@ -54,11 +54,10 @@ export default function HeroStats() {
                     <motion.div
                       key={String(value)}
                       className={cn(
-                        "absolute inset-0 flex items-center justify-center font-semibold",
-                        "text-2xl sm:text-3xl tracking-tight",
+                        "absolute inset-0 flex items-center justify-center font-semibold text-2xl sm:text-3xl tracking-tight",
                         gold
-                          ? "text-yellow-400 drop-shadow-[0_0_14px_rgba(250,204,21,0.45)]"
-                          : "text-white"
+                          ? "text-yellow-400 drop-shadow-[0_0_14px_rgba(250,204,21,.55)]"
+                          : reduce ? "text-white" : "text-white glow-theme" // themed glow
                       )}
                       initial={reduce ? false : { y: "100%", opacity: 0 }}
                       animate={reduce ? { opacity: 1 } : { y: 0, opacity: 1 }}
@@ -70,9 +69,12 @@ export default function HeroStats() {
                   </AnimatePresence>
                 </div>
               ) : (
-                // non-flipping: no overflow restriction, wider min width to avoid clipping (e.g., "1300+")
-                <div className="h-9 flex items-center justify-center min-w-[10ch]">
-                  <span className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+                // non-flipping: ensure wide enough, no clipping (e.g., "1300+")
+                <div className="h-9 flex items-center justify-center min-w-[11ch]">
+                  <span className={cn(
+                    "text-2xl sm:text-3xl font-semibold tracking-tight",
+                    reduce ? "text-white" : "text-white glow-theme"
+                  )}>
                     {value}
                   </span>
                 </div>
@@ -80,7 +82,10 @@ export default function HeroStats() {
 
               {/* subtitle INSIDE the card, pinned to bottom */}
               {isProjects && (
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.15em] text-white/55">
+                <div className={cn(
+                  "absolute bottom-2 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.15em]",
+                  reduce ? "text-white/55" : "text-white/70 glow-theme"
+                )}>
                   {flip === 0 ? "Total" : "Featured"}
                 </div>
               )}
