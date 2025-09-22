@@ -5,7 +5,6 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { heroStats } from "@/lib/content"
 
-// inline LinkedIn logo (no external icons required)
 function LinkedInMark(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
@@ -18,67 +17,74 @@ export default function HeroStats() {
   const reduce = useReducedMotion()
   const [flip, setFlip] = React.useState(0)
 
-  // flip Projects every ~2.2s like your GlassFlipper
   React.useEffect(() => {
     if (reduce) return
     const id = setInterval(() => setFlip((v) => (v ? 0 : 1)), 2200)
     return () => clearInterval(id)
   }, [reduce])
 
+  const glassCard =
+    "glass w-full h-24 rounded-xl ring-1 ring-white/10 px-6 " +
+    "bg-white/[0.04] backdrop-blur-xl " +
+    "shadow-[0_18px_80px_-20px_rgba(16,185,129,.35)] " +
+    "relative flex items-center justify-center text-center"
+
   return (
     <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
       {heroStats.map((s) => {
         const isProjects = s.id === "projects"
         const value = isProjects && Array.isArray(s.rolling) ? s.rolling[flip] : s.value
-
-        // same glass recipe as your GlassFlipper
-        const glassCard = cn(
-          "glass w-full h-24 rounded-xl ring-1 ring-white/10 px-6",
-          "bg-white/[0.04] backdrop-blur-xl",
-          "shadow-[0_18px_80px_-20px_rgba(16,185,129,.35)]",
-          "flex items-center justify-center text-center"
-        )
-
         const gold = isProjects && value === "9"
 
         return (
           <div key={s.id} className="flex flex-col items-center">
-            {/* label ABOVE the box */}
+            {/* label ABOVE */}
             <div className="mb-2 flex items-center gap-2 text-sm font-medium text-white/70">
               {s.id === "linkedin" && <LinkedInMark className="h-4 w-4" />}
               <span>{s.label}</span>
             </div>
 
-            {/* number INSIDE the glass box, flipping like GlassFlipper */}
+            {/* glass card */}
             <div className={glassCard} aria-live="polite">
-              <div className="relative h-8 sm:h-9 overflow-hidden min-w-[7ch]">
-                <AnimatePresence initial={false} mode="popLayout">
-                  <motion.div
-                    key={String(value) + String(s.id)}
-                    className={cn(
-                      "absolute inset-0 flex items-center justify-center font-semibold",
-                      "text-2xl sm:text-3xl tracking-tight",
-                      gold
-                        ? "text-yellow-400 drop-shadow-[0_0_14px_rgba(250,204,21,0.45)]"
-                        : "text-white"
-                    )}
-                    initial={reduce ? false : { y: "100%", opacity: 0 }}
-                    animate={reduce ? { opacity: 1 } : { y: 0, opacity: 1 }}
-                    exit={reduce ? { opacity: 0 } : { y: "-100%", opacity: 0 }}
-                    transition={{ duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}
-                  >
-                    <span>{value}</span>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
+              {/* NUMBER */}
+              {isProjects ? (
+                // flip viewport only for Projects
+                <div className="relative h-9 overflow-hidden min-w-[9ch]">
+                  <AnimatePresence initial={false} mode="popLayout">
+                    <motion.div
+                      key={String(value)}
+                      className={cn(
+                        "absolute inset-0 flex items-center justify-center font-semibold",
+                        "text-2xl sm:text-3xl tracking-tight",
+                        gold
+                          ? "text-yellow-400 drop-shadow-[0_0_14px_rgba(250,204,21,0.45)]"
+                          : "text-white"
+                      )}
+                      initial={reduce ? false : { y: "100%", opacity: 0 }}
+                      animate={reduce ? { opacity: 1 } : { y: 0, opacity: 1 }}
+                      exit={reduce ? { opacity: 0 } : { y: "-100%", opacity: 0 }}
+                      transition={{ duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}
+                    >
+                      <span>{value}</span>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              ) : (
+                // non-flipping: no overflow restriction, wider min width to avoid clipping (e.g., "1300+")
+                <div className="h-9 flex items-center justify-center min-w-[10ch]">
+                  <span className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+                    {value}
+                  </span>
+                </div>
+              )}
 
-            {/* tiny hint ONLY for projects so the toggle makes sense */}
-            {isProjects && (
-              <div className="mt-1 text-[10px] uppercase tracking-[0.15em] text-white/50">
-                {flip === 0 ? "Total" : "Featured"}
-              </div>
-            )}
+              {/* subtitle INSIDE the card, pinned to bottom */}
+              {isProjects && (
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.15em] text-white/55">
+                  {flip === 0 ? "Total" : "Featured"}
+                </div>
+              )}
+            </div>
           </div>
         )
       })}
