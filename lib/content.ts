@@ -214,7 +214,7 @@ export const education: Education[] = [
      stats: [
       { label: "CGPA", value: "3.83 / 4.00" },
       { label: "Credits Earned", value: "18 / 30" },
-      { label: "Projects", value: "6" },
+      { label: "Projects", value: "7" },
       { label: "Hackathons Won", value: "2" },
     ],
   },
@@ -330,7 +330,7 @@ export const certifications: Certification[] = [
 ]
 
 export const heroStats = [
-  { id: "projects",  label: "Projects",       rolling: ["18", "7"] }, 
+  { id: "projects",  label: "Projects",       rolling: ["19", "8"] }, 
   { id: "hackathons",label: "Hackathon Wins", value: "3" },
   { id: "linkedin",  label: "Followers",      value: "1300+" },
   { id: "stack",     label: "Tech Stack",     value: "28" },
