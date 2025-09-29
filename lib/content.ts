@@ -76,7 +76,7 @@ export const allProjects: Project[] = [
     tags: ["AI","Exploration","Visual-UI","Accessibility"],
     date: "2023-09-01",
     featured: true,
-    image: "/images/projects/malware-detection.png",
+    image: "/images/projects/celestia.png",
   },
   {
   slug: "slidesage-ai",
