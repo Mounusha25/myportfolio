@@ -69,6 +69,16 @@ export interface Certification {
 
 export const allProjects: Project[] = [
   {
+    slug: "celestia-ai",
+    title: "Celestia AI",
+    description:"Celestia AI turns maps into living worlds. Drop a marker anywhere and watch a holographic mascot bring the place to life with cinematic video loops, six fact cards, and real-time narration. Instead of reading static text, users step into a guided storytelling experience where culture, heritage, and history feel tangible."
+    tech: ["Next.js","Three.js","ReAct-globe","TailwindCSS","Typescript"],
+    tags: ["AI","Exploration","Visual-UI","Accessibility"],
+    date: "2023-09-01",
+    featured: true,
+    image: "/images/projects/malware-detection.png",
+  },
+  {
   slug: "slidesage-ai",
   title: "SlideSage AI",
   description:
