@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import type { Education } from "@/lib/content"
 import "./flip-card-styles.css"
-import { useState } from "react"
 
 interface FlipEducationCardProps {
   education: Education
@@ -11,7 +10,6 @@ interface FlipEducationCardProps {
 }
 
 export function FlipEducationCard({ education, index }: FlipEducationCardProps) {
-  const [isFlipped, setIsFlipped] = useState(false)
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -31,7 +29,7 @@ export function FlipEducationCard({ education, index }: FlipEducationCardProps) 
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="flip-card"
     >
-      <div className={`flip-content ${isFlipped ? 'flipped' : ''}`}>
+      <div className="flip-content">
         {/* Front of Card */}
         <div
           className="flip-front"
@@ -48,11 +46,8 @@ export function FlipEducationCard({ education, index }: FlipEducationCardProps) 
                 <span className="badge-completed">Completed</span>
               )}
             </div>
-            <label
-              className="flip-button"
-              onClick={() => setIsFlipped(true)}
-            >
-              View Details
+            <label className="flip-button">
+              Hover for details
             </label>
           </div>
         </div>
@@ -96,12 +91,7 @@ export function FlipEducationCard({ education, index }: FlipEducationCardProps) 
               )}
             </div>
 
-            <label
-              className="flip-button return"
-              onClick={() => setIsFlipped(false)}
-            >
-              Back
-            </label>
+            {/* No back button; details are revealed on hover */}
           </div>
         </div>
       </div>
