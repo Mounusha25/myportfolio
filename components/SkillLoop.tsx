@@ -40,8 +40,8 @@ const iconifyIdMap: Record<string, string> = {
   Tableau: "simple-icons:tableau",
   "Power BI": "simple-icons:powerbi",
   Streamlit: "simple-icons:streamlit",
-  Matplotlib: "mdi:language-python",
-  Seaborn: "mdi:language-python",
+  Matplotlib: "simple-icons:matplotlib",
+  Seaborn: "simple-icons:seaborn",
   Excel: "vscode-icons:file-type-excel",
   "Statistical Modeling": "mdi:chart-box-outline",
   "Linear Optimization (CPLEX)": "mdi:chart-line-variant",
@@ -107,7 +107,46 @@ function Row({
           const icon = resolveIcon(it.name)
           const accent = `accent-${it.cat}`
           const delay = ((idx * 137) % 110) / 10 // 0..11s stagger
-          const themeColor = it.cat === 'dsml' ? 'af6dff' : it.cat === 'de' ? 'ff64b4' : it.cat === 'viz' ? 'ffd966' : '78beff'
+          const brandColorMap: Record<string, string> = {
+            Python: '3776AB',
+            R: '276DC3',
+            'Scikit-learn': 'F7931E',
+            TensorFlow: 'FF6F00',
+            PyTorch: 'EE4C2C',
+            NLP: 'A855F7',
+            'Recommendation Systems': '3B82F6',
+            'LLM Integration': '00C3FF',
+            'Time Series Analysis': '14B8A6',
+            'Causal Inference': '6366F1',
+            'A/B Testing': 'E11D48',
+            SQL: '00758F',
+            PySpark: 'E25A1C',
+            Databricks: 'FF3621',
+            'Apache Airflow': '00A699',
+            MLflow: '0194E2',
+            Docker: '2496ED',
+            'REST APIs': '0EA5E9',
+            MySQL: '4479A1',
+            PostgreSQL: '336791',
+            'SQL Server': 'CC2927',
+            SQLite: '003B57',
+            Supabase: '3ECF8E',
+            Tableau: '00AEEF',
+            'Power BI': 'F2C811',
+            Streamlit: 'FF4B4B',
+            Matplotlib: '11557C',
+            Seaborn: '4BC0C0',
+            Excel: '217346',
+            'Statistical Modeling': '1E3A8A',
+            'Linear Optimization (CPLEX)': '052FAD',
+            'D3.js': 'F9A03C',
+            Git: 'F05032',
+            'API Integration': '6366F1',
+            'n8n Workflows': 'E36E5D',
+            Julia: '9558B2',
+            'CI/CD pipelines': '2088FF',
+          }
+          const themeColor = brandColorMap[it.name] ?? (it.cat === 'dsml' ? 'af6dff' : it.cat === 'de' ? 'ff64b4' : it.cat === 'viz' ? 'ffd966' : '78beff')
           return (
             <div key={`${it.name}-${idx}`} className={`tile ${accent}`} style={{ ['--pulseDelay' as any]: `${delay}s` }}>
               <div className="icon-wrap">
