@@ -1,82 +1,111 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Mail, Phone, Github, Linkedin } from "lucide-react"
+import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react"
+import type { ReactNode } from "react"
+import type { LucideIcon } from "lucide-react"
+
+type ContactDetail = {
+  label: string
+  value: string
+  Icon: LucideIcon
+}
+
+type SocialLink = {
+  href: string
+  label: string
+  icon: ReactNode
+}
+
+const contactDetails: ContactDetail[] = [
+  { label: "Location", value: "Tempe, AZ", Icon: MapPin },
+  { label: "Email", value: "lvishal1607@gmail.com", Icon: Mail },
+  { label: "Phone", value: "+1 (480) 304-1340", Icon: Phone },
+]
+
+const socialLinks: SocialLink[] = [
+  {
+    href: "https://github.com/VishalLakshmiNarayanan",
+    label: "GitHub",
+    icon: <Github className="social-icon" />,
+  },
+  {
+    href: "https://linkedin.com/in/vishal-lakshmi-narayanan-687619324",
+    label: "LinkedIn",
+    icon: <Linkedin className="social-icon" />,
+  },
+  {
+    href: "https://medium.com/@lvishal1607",
+    label: "Medium",
+    icon: <span className="social-text">M</span>,
+  },
+  {
+    href: "https://leetcode.com/u/lvleetcode/",
+    label: "LeetCode",
+    icon: <span className="social-text">LC</span>,
+  },
+]
 
 export function ContactCard() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="max-w-2xl mx-auto"
+      transition={{ duration: 0.6 }}
+      className="contact-card-shell"
     >
-      <Card className="holographic-card-enhanced">
-        <CardHeader>
-          <CardTitle className="text-2xl text-center text-black">Get In Touch</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-            <div className="flex flex-col items-center space-y-2">
-              <MapPin className="h-5 w-5 text-black" />
-              <div>
-                <p className="font-medium text-black">Location</p>
-                <p className="text-sm text-black/70">Tempe, AZ</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <Mail className="h-5 w-5 text-black" />
-              <div>
-                <p className="font-medium text-black">Email</p>
-                <p className="text-sm text-black/70">lvishal1607@gmail.com</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <Phone className="h-5 w-5 text-black" />
-              <div>
-                <p className="font-medium text-black">Phone</p>
-                <p className="text-sm text-black/70">+1-480-304-1340</p>
-              </div>
-            </div>
-          </div>
+      <div className="contact-card-panel">
+        <p className="eyebrow">Let&apos;s collaborate</p>
+        <h2>Drop a hello, I&apos;m always open to new challenges.</h2>
+        <p className="description">
+          Whether you&apos;re looking to solve a tricky automation problem, build a high-performing
+          product, or just want to chat about what&apos;s next, I&apos;d love to connect.
+        </p>
 
-          <div className="flex flex-wrap justify-center gap-3">
+        <div className="details-grid">
+          {contactDetails.map(({ label, value, Icon }) => (
+            <div key={label} className="detail">
+              <Icon className="detail-icon" />
+              <div>
+                <p className="detail-label">{label}</p>
+                <p className="detail-value">{value}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="action-row">
+          <a className="button" href="mailto:lvishal1607@gmail.com" aria-label="Email Vishal">
+            Email Me
+          </a>
+          <a className="button secondary" href="tel:+14803041340" aria-label="Call Vishal">
+            Call
+          </a>
+        </div>
+
+        <div className="social-links">
+          {socialLinks.map(({ href, label, icon }) => (
             <a
-              href="https://github.com/VishalLakshmiNarayanan"
+              key={label}
+              href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="social-icon github w-10 h-10 flex items-center justify-center"
+              aria-label={`Visit ${label}`}
             >
-              <Github className="icon w-4 h-4" />
+              {icon}
             </a>
-            <a
-              href="https://linkedin.com/in/vishal-lakshmi-narayanan-687619324"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon linkedin w-10 h-10 flex items-center justify-center"
-            >
-              <Linkedin className="icon w-4 h-4" />
-            </a>
-            <a
-              href="https://medium.com/@lvishal1607"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon medium w-10 h-10 flex items-center justify-center"
-            >
-              <span className="icon text-sm font-bold">M</span>
-            </a>
-            <a
-              href="https://leetcode.com/u/lvleetcode/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-icon leetcode w-10 h-10 flex items-center justify-center"
-            >
-              <span className="icon text-xs font-bold">LC</span>
-            </a>
-          </div>
-        </CardContent>
-      </Card>
+          ))}
+        </div>
+      </div>
+
+      <div className="accents">
+        <div className="acc-card" />
+        <div className="acc-card" />
+        <div className="acc-card" />
+        <div className="light" />
+        <div className="light sm" />
+        <div className="top-light" />
+      </div>
     </motion.div>
   )
 }
