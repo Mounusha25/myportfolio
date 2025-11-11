@@ -37,7 +37,7 @@ const moments: Moment[] = [
       "Participated in Techipalooza 2025, a networking conference where startups and innovators showcased their products and ideas, fostering connections across ASU’s tech ecosystem.",
   },
   {
-    title: "DevHacks S2 – Winning Edition",
+    title: "DevHacks S2 [WON 1st Place]",
     date: "August 2025",
     image: "/images/Moments/devhackss2.png",
     description:
@@ -65,7 +65,7 @@ const moments: Moment[] = [
       "Conducted my first hands-on workshop on portfolio building, guiding students through structuring impactful projects, showcasing skills, and presenting their work effectively.",
   },
   {
-    title: "Claude Builder Hackathon – Mentorship",
+    title: "Mentoring Team at Claude Builder Hackathon",
     date: "November 2025",
     image: "/images/Moments/mentorship.png",
     description:
