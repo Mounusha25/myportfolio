@@ -1,0 +1,171 @@
+  { name: "Data Mining", category: "data", connections: ["SQL", "Python", "Pandas", "MySQL"] },
+  { name: "CPLEX", category: "data", connections: ["Optimization", "Python"] },
+  { name: "n8n Workflows", category: "data", connections: ["APIs", "Automation"] },
+  { name: "Apache Airflow", category: "data", connections: ["ETL", "Scheduling", "Python"] },
+  { name: "Docker", category: "data", connections: ["DevOps", "MLflow"] },
+  { name: "MLflow", category: "data", connections: ["MLOps", "PyTorch"] },
+
+]
+
+// Updated neon color palette with neon blue theme
+const categoryColors = {
+  programming: "#95f0c2",
+  database: "#2a754f",
+  analytics: "#027a42",
+  visualization: "#52b486",
+  statistics: "#0daf0d",
+  ml: "#50925d",
+  data: "#05f792",
+}
+
+
+export function FloatingSkillsBubble() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const bubblesRef = useRef<Bubble[]>([])
+  const animationRef = useRef<number>()
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    const resizeCanvas = () => {
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+    }
+
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
+
+    // Function to check if two bubbles overlap
+    const checkOverlap = (bubble1: Bubble, bubble2: Bubble) => {
+      const dx = bubble1.x - bubble2.x
+      const dy = bubble1.y - bubble2.y
+      const distance = Math.sqrt(dx * dx + dy * dy)
+      return distance < bubble1.radius + bubble2.radius + 20 // Increased buffer from 10 to 20
+    }
+
+    // Function to find a non-overlapping position with grid-based approach
+    const findNonOverlappingPosition = (bubbles: Bubble[], newBubble: Bubble, maxAttempts = 100) => {
+      // Try grid-based positioning first for better distribution
+      const gridCols = Math.floor(canvas.width / 80) // 80px grid cells
+      const gridRows = Math.floor(canvas.height / 80)
+      const gridPositions = []
+
+      for (let row = 0; row < gridRows; row++) {
+        for (let col = 0; col < gridCols; col++) {
+          gridPositions.push({
+            x: (col + 0.5) * (canvas.width / gridCols),
+            y: (row + 0.5) * (canvas.height / gridRows),
+          })
+        }
+      }
+
+      // Shuffle grid positions for randomness
+      for (let i = gridPositions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[gridPositions[i], gridPositions[j]] = [gridPositions[j], gridPositions[i]]
+      }
+
+      // Try grid positions first
+      for (const pos of gridPositions) {
+        if (
+          pos.x >= newBubble.radius &&
+          pos.x <= canvas.width - newBubble.radius &&
+          pos.y >= newBubble.radius &&
+          pos.y <= canvas.height - newBubble.radius
+        ) {
+          newBubble.x = pos.x
+          newBubble.y = pos.y
+
+          let overlapping = false
+          for (const existingBubble of bubbles) {
+            if (checkOverlap(newBubble, existingBubble)) {
+              overlapping = true
+              break
+            }
+          }
+
+          if (!overlapping) {
+            return true
+          }
+        }
+      }
+
+      // Fallback to random positioning with more attempts
+      for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        newBubble.x = Math.random() * (canvas.width - newBubble.radius * 2) + newBubble.radius
+        newBubble.y = Math.random() * (canvas.height - newBubble.radius * 2) + newBubble.radius
+
+        let overlapping = false
+        for (const existingBubble of bubbles) {
+          if (checkOverlap(newBubble, existingBubble)) {
+            overlapping = true
+            break
+          }
+        }
+
+        if (!overlapping) {
+          return true
+        }
+      }
+      return false
+    }
+
+    // Initialize bubbles with better spacing
+    const bubbles: Bubble[] = []
+    skillsData.forEach((skillData, i) => {
+      const newBubble: Bubble = {
+        id: i,
+        x: 0,
+        y: 0,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        radius: Math.random() * 6 + 22, // Slightly smaller bubbles (22-28 instead of 25-33)
+        skill: skillData.name,
+        color: categoryColors[skillData.category as keyof typeof categoryColors] || "#2196f3",
+        category: skillData.category,
+      }
+
+      if (findNonOverlappingPosition(bubbles, newBubble)) {
+        bubbles.push(newBubble)
+      } else {
+        // More aggressive fallback - much smaller radius and edge placement
+        newBubble.radius = Math.random() * 4 + 18
+        newBubble.x = Math.random() * (canvas.width - newBubble.radius * 2) + newBubble.radius
+        newBubble.y = Math.random() * (canvas.height - newBubble.radius * 2) + newBubble.radius
+        bubbles.push(newBubble)
+      }
+    })
+    bubblesRef.current = bubbles
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      bubbles.forEach((bubble) => {
+        // Update position
+        bubble.x += bubble.vx
+        bubble.y += bubble.vy
+
+        // Bounce off walls with some padding
+        const wallPadding = 5
+        if (bubble.x <= bubble.radius + wallPadding || bubble.x >= canvas.width - bubble.radius - wallPadding) {
+          bubble.vx *= -0.8 // Add some energy loss on wall bounce
+        }
+        if (bubble.y <= bubble.radius + wallPadding || bubble.y >= canvas.height - bubble.radius - wallPadding) {
+          bubble.vy *= -0.8
+        }
+
+        // Keep within bounds with padding
+        bubble.x = Math.max(bubble.radius + wallPadding, Math.min(canvas.width - bubble.radius - wallPadding, bubble.x))
+        bubble.y = Math.max(
+          bubble.radius + wallPadding,
+          Math.min(canvas.height - bubble.radius - wallPadding, bubble.y),
+        )
+
+        // Enhanced collision detection and separation
+        bubbles.forEach((otherBubble) => {
+          if (bubble.id !== otherBubble.id) {
+            const dx = bubble.x - otherBubble.x

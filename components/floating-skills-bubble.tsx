@@ -22,90 +22,60 @@ interface SkillData {
 }
 
 const skillsData: SkillData[] = [
-  // Programming Languages
-  {
-    name: "Python",
-    category: "programming",
-    connections: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Machine Learning", "Deep Learning", "NLP"],
-  },
-  {
-    name: "R",
-    category: "programming",
-    connections: ["Statistics", "Regression", "Time Series", "Hypothesis Testing"],
-  },
-  { name: "Java", category: "programming", connections: ["SQL", "Classification"] },
-  { name: "SQL", category: "programming", connections: ["MySQL", "PostgreSQL", "Data Mining", "Java"] },
-  { name: "Julia", category: "programming", connections: ["Python", "NumPy", "Pandas"] },
-  { name: "C", category: "programming", connections: ["C++", "Algorithms"] },
-  { name: "C++", category: "programming", connections: ["C", "Algorithms"] },
-  { name: "Git", category: "programming", connections: ["CI/CD", "Docker"] },
+  // Data Science & Machine Learning
+  { name: "Python", category: "dsml", connections: ["Scikit-learn", "TensorFlow", "PyTorch", "NLP", "Time Series Analysis"] },
+  { name: "R", category: "dsml", connections: ["Causal Inference", "A/B Testing", "Time Series Analysis", "Statistical Modeling"] },
+  { name: "Scikit-learn", category: "dsml", connections: ["Python", "Recommendation Systems"] },
+  { name: "TensorFlow", category: "dsml", connections: ["Python", "NLP", "MLflow"] },
+  { name: "PyTorch", category: "dsml", connections: ["Python", "NLP", "MLflow"] },
+  { name: "NLP", category: "dsml", connections: ["Python", "LLM Integration", "Recommendation Systems"] },
+  { name: "Recommendation Systems", category: "dsml", connections: ["Scikit-learn", "NLP", "LLM Integration"] },
+  { name: "LLM Integration", category: "dsml", connections: ["Python", "NLP"] },
+  { name: "Time Series Analysis", category: "dsml", connections: ["Python", "R"] },
+  { name: "Causal Inference", category: "dsml", connections: ["R", "A/B Testing"] },
+  { name: "A/B Testing", category: "dsml", connections: ["Causal Inference", "Statistical Modeling"] },
 
+  // Data Engineering & Infrastructure
+  { name: "SQL", category: "de", connections: ["MySQL", "PostgreSQL", "SQL Server", "SQLite", "Supabase", "Databricks"] },
+  { name: "PySpark", category: "de", connections: ["Databricks", "SQL"] },
+  { name: "Databricks", category: "de", connections: ["PySpark", "MLflow"] },
+  { name: "Apache Airflow", category: "de", connections: ["REST APIs", "Docker", "MLflow"] },
+  { name: "MLflow", category: "de", connections: ["Databricks", "PyTorch", "TensorFlow"] },
+  { name: "Docker", category: "de", connections: ["REST APIs", "CI/CD pipelines"] },
+  { name: "REST APIs", category: "de", connections: ["SQL", "Docker", "API Integration"] },
+  { name: "MySQL", category: "de", connections: ["SQL"] },
+  { name: "PostgreSQL", category: "de", connections: ["SQL"] },
+  { name: "SQL Server", category: "de", connections: ["SQL"] },
+  { name: "SQLite", category: "de", connections: ["SQL"] },
+  { name: "Supabase", category: "de", connections: ["SQL", "REST APIs"] },
+  { name: "MongoDB", category: "de", connections: ["REST APIs"] },
 
-  // Databases
-  { name: "MySQL", category: "database", connections: ["SQL", "PostgreSQL", "Data Mining"] },
-  { name: "PostgreSQL", category: "database", connections: ["SQL", "MySQL", "Python"] },
-  { name: "SQL Server", category: "database", connections: ["SQL"] },
-  { name: "SQLite", category: "database", connections: ["SQL"] },
-  { name: "Databricks", category: "database", connections: ["PySpark", "SQL"] },
-  { name: "PySpark", category: "database", connections: ["Databricks", "SQL"] },
+  // Data Analytics & Visualization
+  { name: "Tableau", category: "viz", connections: ["SQL", "Excel"] },
+  { name: "Power BI", category: "viz", connections: ["SQL", "Excel"] },
+  { name: "Streamlit", category: "viz", connections: ["Python"] },
+  { name: "Matplotlib", category: "viz", connections: ["Python"] },
+  { name: "Seaborn", category: "viz", connections: ["Python"] },
+  { name: "Excel", category: "viz", connections: ["Power BI", "Tableau"] },
+  { name: "Statistical Modeling", category: "viz", connections: ["R", "A/B Testing"] },
+  { name: "Linear Optimization (CPLEX)", category: "viz", connections: ["Python"] },
+  { name: "D3.js", category: "viz", connections: ["REST APIs"] },
 
-
-  // Analytics & Visualization
-  { name: "Pandas", category: "analytics", connections: ["Python", "NumPy", "Data Mining", "Statistics"] },
-  { name: "NumPy", category: "analytics", connections: ["Python", "Pandas", "Machine Learning", "Deep Learning"] },
-  { name: "Matplotlib", category: "visualization", connections: ["Python", "Seaborn", "NumPy", "Statistics"] },
-  { name: "Seaborn", category: "visualization", connections: ["Python", "Matplotlib", "Statistics", "Regression"] },
-  { name: "Power BI", category: "visualization", connections: ["Excel", "SQL"] },
-  { name: "Excel", category: "analytics", connections: ["Power BI", "Statistics"] },
-  { name: "Tableau", category: "visualization", connections: ["SQL", "Excel"] },
-  { name: "Streamlit", category: "analytics", connections: ["Python", "Pandas", "NumPy"] },
-
-
-  // Statistics
-  {
-    name: "Statistics",
-    category: "statistics",
-    connections: ["R", "Python", "Hypothesis Testing", "Regression", "Time Series"],
-  },
-  { name: "Hypothesis Testing", category: "statistics", connections: ["R", "Statistics", "Causal Inference"] },
-  { name: "Regression", category: "statistics", connections: ["R", "Statistics", "Machine Learning", "Seaborn"] },
-  { name: "Time Series", category: "statistics", connections: ["R", "Statistics", "Predictive Modeling"] },
-  { name: "Causal Inference", category: "statistics", connections: ["Statistics", "Hypothesis Testing"] },
-
-  // Machine Learning
-  {
-    name: "Machine Learning",
-    category: "ml",
-    connections: ["Python", "Deep Learning", "NLP", "Predictive Modeling", "Classification", "NumPy"],
-  },
-  { name: "Deep Learning", category: "ml", connections: ["Python", "Machine Learning", "NLP", "NumPy"] },
-  { name: "NLP", category: "ml", connections: ["Python", "Machine Learning", "Deep Learning"] },
-  { name: "Predictive Modeling", category: "ml", connections: ["Machine Learning", "Time Series", "Python"] },
-  { name: "Classification", category: "ml", connections: ["Machine Learning", "Java", "Anomaly Detection"] },
-  { name: "Anomaly Detection", category: "ml", connections: ["Machine Learning", "Classification"] },
-  { name: "Gradient Boosted Models", category: "ml", connections: ["Predictive Modeling"] },  
-  { name: "PyTorch", category: "ml", connections: ["Deep Learning", "NLP"] },
-
-
-  // Data Processing
-  { name: "Data Mining", category: "data", connections: ["SQL", "Python", "Pandas", "MySQL"] },
-  { name: "CPLEX", category: "data", connections: ["Optimization", "Python"] },
-  { name: "n8n Workflows", category: "data", connections: ["APIs", "Automation"] },
-  { name: "Apache Airflow", category: "data", connections: ["ETL", "Scheduling", "Python"] },
-  { name: "Docker", category: "data", connections: ["DevOps", "MLflow"] },
-  { name: "MLflow", category: "data", connections: ["MLOps", "PyTorch"] },
-
+  // Additional Proficiencies
+  { name: "Git", category: "misc", connections: ["CI/CD pipelines", "Docker"] },
+  { name: "API Integration", category: "misc", connections: ["REST APIs", "n8n Workflows"] },
+  { name: "n8n Workflows", category: "misc", connections: ["API Integration", "REST APIs"] },
+  { name: "Julia", category: "misc", connections: ["Linear Optimization (CPLEX)"] },
+  { name: "CI/CD pipelines", category: "misc", connections: ["Git", "Docker"] },
+  { name: "Astro", category: "misc", connections: ["D3.js", "REST APIs"] },
 ]
 
-// Updated neon color palette with neon blue theme
+// Neon palette per new categories
 const categoryColors = {
-  programming: "#95f0c2",
-  database: "#2a754f",
-  analytics: "#027a42",
-  visualization: "#52b486",
-  statistics: "#0daf0d",
-  ml: "#50925d",
-  data: "#05f792",
+  dsml: "#05f792", // Data Science & ML
+  de: "#2a754f", // Data Engineering & Infra
+  viz: "#52b486", // Analytics & Visualization
+  misc: "#95f0c2", // Additional Proficiencies
 }
 
 
