@@ -21,11 +21,11 @@ const categoryIcons = {
 }
 
 const categoryColors = {
-  ai: "bg-purple-500/10 text-purple-600 border-purple-500/20",
-  cloud: "bg-blue-500/10 text-blue-600 border-blue-500/20",
-  programming: "bg-green-500/10 text-green-600 border-green-500/20",
-  data: "bg-orange-500/10 text-orange-600 border-orange-500/20",
-  other: "bg-gray-500/10 text-gray-600 border-gray-500/20",
+  ai: "bg-purple-100/50 text-black border-purple-300/30",
+  cloud: "bg-blue-100/50 text-black border-blue-300/30",
+  programming: "bg-yellow-100/50 text-black border-yellow-300/30",
+  data: "bg-pink-100/50 text-black border-pink-300/30",
+  other: "bg-white/60 text-black border-purple-200/30",
 }
 
 export function CertificationCard({ certification, index }: CertificationCardProps) {
@@ -53,17 +53,17 @@ export function CertificationCard({ certification, index }: CertificationCardPro
                 <IconComponent className="w-5 h-5" />
               </div>
               <div className="flex-1">
-                <CardTitle className="text-lg leading-tight">{certification.title}</CardTitle>
-                <p className="text-sm text-muted-foreground font-medium mt-1">{certification.organization}</p>
+                <CardTitle className="text-lg leading-tight text-black">{certification.title}</CardTitle>
+                <p className="text-sm text-black/70 font-medium mt-1">{certification.organization}</p>
               </div>
             </div>
-            <Badge variant="outline" className="text-xs">
+            <Badge variant="outline" className="text-xs border-purple-200 text-black">
               {formatDate(certification.date)}
             </Badge>
           </div>
         </CardHeader>
         <CardContent>
-          <Button asChild size="sm" className="w-full">
+          <Button asChild size="sm" className="w-full bg-purple-500 hover:bg-purple-600 text-white">
             <a href={certification.credentialUrl} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="mr-2 h-4 w-4" />
               View Credentials

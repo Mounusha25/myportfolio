@@ -20,10 +20,10 @@ const categoryIcons = {
 }
 
 const categoryColors = {
-  hackathon: "bg-yellow-500/10 text-yellow-600 border-yellow-500/20",
-  academic: "bg-blue-500/10 text-blue-600 border-blue-500/20",
-  competition: "bg-purple-500/10 text-purple-600 border-purple-500/20",
-  recognition: "bg-green-500/10 text-green-600 border-green-500/20",
+  hackathon: "bg-yellow-100/50 text-black border-yellow-300/30",
+  academic: "bg-blue-100/50 text-black border-blue-300/30",
+  competition: "bg-purple-100/50 text-black border-purple-300/30",
+  recognition: "bg-pink-100/50 text-black border-pink-300/30",
 }
 
 export function AwardCard({ award, index }: AwardCardProps) {
@@ -62,17 +62,17 @@ export function AwardCard({ award, index }: AwardCardProps) {
                 <IconComponent className="w-5 h-5" />
               </div>
               <div>
-                <CardTitle className="text-lg">{award.title}</CardTitle>
-                <p className="text-sm text-muted-foreground font-medium">{award.organization}</p>
+                <CardTitle className="text-lg text-black">{award.title}</CardTitle>
+                <p className="text-sm text-black/70 font-medium">{award.organization}</p>
               </div>
             </div>
-            <Badge variant="outline" className="text-xs">
+            <Badge variant="outline" className="text-xs border-purple-200 text-black">
               {formatDate(award.date)}
             </Badge>
           </div>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground leading-relaxed">{award.description}</p>
+          <p className="text-black/70 leading-relaxed">{award.description}</p>
         </CardContent>
       </Card>
     </motion.div>

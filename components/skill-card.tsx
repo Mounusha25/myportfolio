@@ -97,10 +97,10 @@ export function SkillCard({ skillGroup, index }: SkillCardProps) {
       <Card className="h-full holographic-card">
         <CardHeader>
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-primary/10 text-primary border border-primary/20">
+            <div className="p-2 rounded-lg bg-purple-100/50 text-black border border-purple-300/30">
               <CategoryIcon className="w-5 h-5" />
             </div>
-            <CardTitle className="text-lg leading-tight">{skillGroup.category}</CardTitle>
+            <CardTitle className="text-lg leading-tight text-black">{skillGroup.category}</CardTitle>
           </div>
         </CardHeader>
         <CardContent>
@@ -108,7 +108,7 @@ export function SkillCard({ skillGroup, index }: SkillCardProps) {
             {skillGroup.skills.map((skill) => {
               const Icon = getSkillIcon(skill)
               return (
-                <Badge key={skill} className="bg-primary/10 text-primary hover:bg-primary/20 flex items-center gap-1.5">
+                <Badge key={skill} className="bg-white/60 text-black hover:bg-white/80 border border-purple-200/50 flex items-center gap-1.5 font-medium">
                   {Icon ? <Icon className="w-3.5 h-3.5" /> : null}
                   {skill}
                 </Badge>

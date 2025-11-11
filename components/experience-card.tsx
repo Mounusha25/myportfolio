@@ -31,22 +31,22 @@ export function ExperienceCard({ experience, index }: ExperienceCardProps) {
       <Card className="holographic-card">
         <CardHeader>
           <div className="flex flex-col space-y-2">
-            <CardTitle className="text-xl">{experience.title}</CardTitle>
+            <CardTitle className="text-xl text-black">{experience.title}</CardTitle>
             <div className="flex flex-col space-y-1">
-              <p className="text-lg font-medium text-muted-foreground">{experience.company}</p>
-              <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              <p className="text-lg font-medium text-black/80">{experience.company}</p>
+              <div className="flex flex-wrap items-center gap-2 text-sm text-black/70">
                 <span>{experience.location}</span>
-                <Badge variant="outline">{duration}</Badge>
+                <Badge variant="outline" className="border-purple-200 text-black">{duration}</Badge>
               </div>
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-muted-foreground">{experience.description}</p>
+          <p className="text-black/70">{experience.description}</p>
           <ul className="space-y-2">
             {experience.achievements.map((achievement, i) => (
-              <li key={i} className="text-sm text-muted-foreground flex items-start">
-                <span className="text-primary mr-2 mt-1">•</span>
+              <li key={i} className="text-sm text-black/70 flex items-start">
+                <span className="text-purple-600 mr-2 mt-1">•</span>
                 {achievement}
               </li>
             ))}

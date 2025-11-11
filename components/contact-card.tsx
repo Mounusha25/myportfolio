@@ -14,29 +14,29 @@ export function ContactCard() {
     >
       <Card className="holographic-card-enhanced">
         <CardHeader>
-          <CardTitle className="text-2xl text-center">Get In Touch</CardTitle>
+          <CardTitle className="text-2xl text-center text-black">Get In Touch</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
             <div className="flex flex-col items-center space-y-2">
-              <MapPin className="h-5 w-5 text-primary" />
+              <MapPin className="h-5 w-5 text-black" />
               <div>
-                <p className="font-medium">Location</p>
-                <p className="text-sm text-muted-foreground">Tempe, AZ</p>
+                <p className="font-medium text-black">Location</p>
+                <p className="text-sm text-black/70">Tempe, AZ</p>
               </div>
             </div>
             <div className="flex flex-col items-center space-y-2">
-              <Mail className="h-5 w-5 text-primary" />
+              <Mail className="h-5 w-5 text-black" />
               <div>
-                <p className="font-medium">Email</p>
-                <p className="text-sm text-muted-foreground">lvishal1607@gmail.com</p>
+                <p className="font-medium text-black">Email</p>
+                <p className="text-sm text-black/70">lvishal1607@gmail.com</p>
               </div>
             </div>
             <div className="flex flex-col items-center space-y-2">
-              <Phone className="h-5 w-5 text-primary" />
+              <Phone className="h-5 w-5 text-black" />
               <div>
-                <p className="font-medium">Phone</p>
-                <p className="text-sm text-muted-foreground">+1-480-304-1340</p>
+                <p className="font-medium text-black">Phone</p>
+                <p className="text-sm text-black/70">+1-480-304-1340</p>
               </div>
             </div>
           </div>

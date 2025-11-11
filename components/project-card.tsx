@@ -18,7 +18,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, index = 0, active = false, animated = false }: ProjectCardProps) {
   const content = (
-    <Card className={`glass glass-hover h-full overflow-hidden ${active ? "ring-1 ring-emerald-400/40" : ""}`}>
+    <Card className={`glass glass-hover h-full overflow-hidden ${active ? "ring-1 ring-purple-400/40" : ""}`}>
       {project.image && (
         <div className="relative h-48 w-full overflow-hidden rounded-t-2xl">
           <Image
@@ -33,22 +33,22 @@ export function ProjectCard({ project, index = 0, active = false, animated = fal
       )}
 
       <CardHeader>
-        <CardTitle className="text-xl">{project.title}</CardTitle>
+        <CardTitle className="text-xl text-black">{project.title}</CardTitle>
       </CardHeader>
 
       <CardContent className="space-y-4">
         {project.description && (
-          <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+          <p className="text-black/70 leading-relaxed">{project.description}</p>
         )}
 
         {(project.tech?.length || project.tags?.length) && (
           <div className="space-y-3">
             {project.tech?.length ? (
               <div>
-                <h4 className="text-sm font-medium mb-2">Tech Stack</h4>
+                <h4 className="text-sm font-medium mb-2 text-black">Tech Stack</h4>
                 <div className="flex flex-wrap gap-1">
                   {project.tech.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="text-xs">
+                    <Badge key={tech} variant="secondary" className="text-xs bg-white/60 text-black border border-purple-200/30">
                       {tech}
                     </Badge>
                   ))}
@@ -58,10 +58,10 @@ export function ProjectCard({ project, index = 0, active = false, animated = fal
 
             {project.tags?.length ? (
               <div>
-                <h4 className="text-sm font-medium mb-2">Tags</h4>
+                <h4 className="text-sm font-medium mb-2 text-black">Tags</h4>
                 <div className="flex flex-wrap gap-1">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} className="text-xs bg-primary/10 text-primary hover:bg-primary/20">
+                    <Badge key={tag} className="text-xs bg-purple-100/50 text-black hover:bg-purple-100/80 border border-purple-200/30">
                       {tag}
                     </Badge>
                   ))}
@@ -72,16 +72,16 @@ export function ProjectCard({ project, index = 0, active = false, animated = fal
         )}
 
         {project.github && (
-          <Button asChild size="sm" className="w-full">
+          <Button asChild size="sm" className="w-full bg-purple-500 hover:bg-purple-600 text-white">
             <a href={project.github} target="_blank" rel="noopener noreferrer">
               <Github className="mr-2 h-4 w-4" />
               View on GitHub
             </a>
           </Button>
         )}
-        
+
 {project.demo && (
-  <Button asChild size="sm" variant="secondary" className="w-full">
+  <Button asChild size="sm" variant="secondary" className="w-full bg-white/80 text-black hover:bg-white border border-purple-200/30">
     <a href={project.demo} target="_blank" rel="noopener noreferrer">
       <ExternalLink className="mr-2 h-4 w-4" />
       Visit Website

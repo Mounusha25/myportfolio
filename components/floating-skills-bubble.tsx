@@ -306,16 +306,16 @@ export function FloatingSkillsBubble() {
         ctx.stroke()
 
         // Draw text with high contrast
-        ctx.fillStyle = "#ffffff"
+        ctx.fillStyle = "#000000"
         ctx.font = "bold 11px Inter" // Slightly smaller font for smaller bubbles
         ctx.textAlign = "center"
         ctx.textBaseline = "middle"
 
         // Add text shadow for readability
-        ctx.shadowColor = "rgba(0, 0, 0, 0.8)"
+        ctx.shadowColor = "rgba(255, 255, 255, 0.8)"
         ctx.shadowBlur = 4
-        ctx.shadowOffsetX = 2
-        ctx.shadowOffsetY = 2
+        ctx.shadowOffsetX = 1
+        ctx.shadowOffsetY = 1
 
         const text = bubble.skill
         const maxWidth = bubble.radius * 1.6

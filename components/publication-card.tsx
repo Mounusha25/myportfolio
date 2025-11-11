@@ -20,19 +20,19 @@ export function PublicationCard({ publication, index }: PublicationCardProps) {
     >
       <Card className="holographic-card">
         <CardHeader>
-          <CardTitle className="text-lg leading-tight">{publication.title}</CardTitle>
+          <CardTitle className="text-lg leading-tight text-black">{publication.title}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="space-y-2 text-sm text-muted-foreground">
+          <div className="space-y-2 text-sm text-black/70">
             <p>
-              <strong>Authors:</strong> {publication.authors}
+              <strong className="text-black">Authors:</strong> {publication.authors}
             </p>
             <p>
-              <strong>Journal:</strong> {publication.journal} ({publication.year})
+              <strong className="text-black">Journal:</strong> {publication.journal} ({publication.year})
             </p>
           </div>
           {publication.doi && (
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="bg-purple-500 hover:bg-purple-600 text-white">
               <a href={publication.doi} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="mr-2 h-4 w-4" />
                 View Publication
