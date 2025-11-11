@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Github, Linkedin } from "lucide-react"
 import Image from "next/image"
@@ -8,99 +7,97 @@ import GlassFlipper from "@/components/GlassFlipper"
 import HeroStats from "@/components/blocks/HeroStats"
 
 export function HeroSection() {
-  // time pill removed per request
-
   return (
-    <section className="py-12 md:py-16">
-      <div className="container">
+    <section className="py-16 md:py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800" />
+      <div
+        className="pointer-events-none absolute -top-24 right-[-10%] h-[340px] w-[340px] rounded-full bg-gradient-to-br from-rose-500/40 to-fuchsia-500/20 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute bottom-[-10%] left-[-10%] h-[420px] w-[420px] rounded-full bg-gradient-to-br from-cyan-500/40 to-sky-500/20 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="grid sm:grid-cols-2 gap-8 items-center"
+          className="rounded-[36px] border border-white/10 bg-white/5 backdrop-blur-xl p-6 md:p-10"
         >
-          {/* Time pill removed */}
+          <div className="grid gap-10 md:grid-cols-2 items-center">
+            <div className="space-y-5 text-center md:text-left">
+              <p className="text-xs uppercase tracking-[0.6em] text-white/70">AI · Data · Interfaces</p>
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
+                Vishal Lakshmi Narayanan
+              </h1>
+              <GlassFlipper className="mx-auto md:mx-0" />
+              <p className="text-base md:text-lg text-white/80 max-w-2xl leading-relaxed font-medium">
+                I design intelligent, human-first experiences by combining AI, analytics, and storytelling. Every
+                project I ship is rooted in clarity, experimentation, and a sense of wonder about what data can reveal.
+              </p>
 
-          {/* Left copy */}
-          <div className="space-y-4 order-2 md:order-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-black">Vishal Lakshmi Narayanan</h1>
-            <div className="mt-1">
-              <GlassFlipper className="mx-0" />
-            </div>
-            <p className="text-base md:text-lg text-black/80 max-w-2xl leading-relaxed font-medium">
-              I’m Vishal Lakshmi Narayanan, a data science enthusiast who loves turning complex problems into simple, intelligent solutions. I explore how AI, analytics, and real-world data can work together to drive innovation and make technology more human.
-            </p>
+              <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                {["AI Strategy", "Data Science", "Digital Experiences"].map((label) => (
+                  <span
+                    key={label}
+                    className="rounded-full border border-white/20 px-4 py-2 text-[10px] font-semibold tracking-[0.4em] text-white/70"
+                  >
+                    {label}
+                  </span>
+                ))}
+              </div>
 
-            {/* Social buttons positioned above stats */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
-              <a
-                href="https://github.com/VishalLakshmiNarayanan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hero-social-btn github"
-              >
-                <Github className="icon w-5 h-5" />
-                <span className="text font-medium">GitHub</span>
-              </a>
-              <a
-                href="https://linkedin.com/in/vishal-lakshmi-narayanan-687619324"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hero-social-btn linkedin"
-              >
-                <Linkedin className="icon w-5 h-5" />
-                <span className="text font-medium">LinkedIn</span>
-              </a>
-              <a
-                href="https://medium.com/@lvishal1607"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hero-social-btn medium"
-              >
-                <span className="icon text-lg font-bold">M</span>
-                <span className="text font-medium">Medium</span>
-              </a>
-              <a
-                href="https://leetcode.com/u/lvleetcode/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hero-social-btn leetcode"
-              >
-                <span className="icon text-sm font-bold">LC</span>
-                <span className="text font-medium">LeetCode</span>
-              </a>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-3">
+                <a
+                  href="https://github.com/VishalLakshmiNarayanan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-social-btn github"
+                >
+                  <Github className="icon w-5 h-5" />
+                  <span className="text font-medium">GitHub</span>
+                </a>
+                <a
+                  href="https://linkedin.com/in/vishal-lakshmi-narayanan-687619324"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-social-btn linkedin"
+                >
+                  <Linkedin className="icon w-5 h-5" />
+                  <span className="text font-medium">LinkedIn</span>
+                </a>
+              </div>
+
+              <div className="pt-5">
+                <HeroStats />
+              </div>
             </div>
-            <div className="pt-4">
-              <HeroStats />
+
+            <div className="flex justify-center md:justify-end">
+              <div className="relative w-[22rem] h-[22rem] md:w-[46rem] md:h-[48rem] lg:w-[54rem] lg:h-[56rem]">
+                <div
+                  className="pointer-events-none absolute -inset-6 rounded-[2rem]"
+                  style={{
+                    background:
+                      `radial-gradient(ellipse 90% 70% at 60% 35%, rgba(175,109,255,.35), transparent 60%),` +
+                      `radial-gradient(ellipse 90% 60% at 30% 65%, rgba(255,100,180,.25), transparent 62%),` +
+                      `radial-gradient(ellipse 70% 60% at 80% 80%, rgba(120,190,255,.25), transparent 65%)`,
+                    filter: "blur(20px)",
+                  }}
+                />
+                <Image
+                  src="/images/hero/newhero.png"
+                  alt="Vishal Lakshmi Narayanan portrait"
+                  fill
+                  priority
+                  className="object-cover object-center scale-[1.08] drop-shadow-[0_30px_70px_rgba(15,23,42,0.6)]"
+                  sizes="(min-width: 768px) 520px, 360px"
+                />
+              </div>
             </div>
           </div>
-
-          {/* Right visual with lighting + floating socials */}
-          <div className="order-1 md:order-2 flex justify-center md:justify-end">
-            <div className="relative w-[20rem] h-[20rem] md:w-[44rem] md:h-[46rem] lg:w-[48rem] lg:h-[50rem]">
-              {/* Soft theme lighting */}
-              <div
-                className="pointer-events-none absolute -inset-6 rounded-[2rem]"
-                style={{
-                  background:
-                    `radial-gradient(ellipse 90% 70% at 60% 35%, rgba(175,109,255,.35), transparent 60%),` +
-                    `radial-gradient(ellipse 90% 60% at 30% 65%, rgba(255,100,180,.25), transparent 62%),` +
-                    `radial-gradient(ellipse 70% 60% at 80% 80%, rgba(120,190,255,.25), transparent 65%)`,
-                  filter: "blur(20px)",
-                }}
-              />
-              <Image
-                src="/images/hero/newhero.png"
-                alt="Vishal Lakshmi Narayanan portrait"
-                fill
-                priority
-                className="object-contain object-center scale-[1.08] drop-shadow-xl"
-                sizes="(min-width: 768px) 480px, 320px"
-              />
-              {/* Floating socials removed per request (restored bottom buttons) */}
-            </div>
-          </div>
-          {/* Socials moved above stats */}
         </motion.div>
       </div>
     </section>
