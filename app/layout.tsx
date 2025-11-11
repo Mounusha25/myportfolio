@@ -33,9 +33,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <div className="min-h-screen w-full relative crosshatch-bg bg-white text-gray-800">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <div className="min-h-screen w-full relative bg-black text-gray-100">
 
+            {/* Vercel Grid */
+            <div
+              className="absolute inset-0 opacity-30 pointer-events-none"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)' ,
+                backgroundSize: '60px 60px',
+              }}
+            />
             {/* ✅ Waves (bottom). Optional: duplicate with `emerald-waves-top` for top waves */}
            
             {/* Optional top waves:
