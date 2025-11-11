@@ -23,7 +23,7 @@ export function HeroSection() {
 
           {/* Left copy */}
           <div className="space-y-4 order-2 md:order-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-black">I’m Vishal Lakshmi Narayanan</h1>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-black">Vishal Lakshmi Narayanan</h1>
             <div className="mt-1">
               <GlassFlipper className="mx-0" />
             </div>

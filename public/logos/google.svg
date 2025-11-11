@@ -1,0 +1,12 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="googleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4285F4"/>
+      <stop offset="30%" stop-color="#34A853"/>
+      <stop offset="65%" stop-color="#FBBC05"/>
+      <stop offset="100%" stop-color="#EA4335"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="20" fill="url(#googleGradient)"/>
+  <path d="M34 24C31.2386 24 29 26.2386 29 29V35H38C39.6569 35 41 33.6569 41 32C41 30.3431 39.6569 29 38 29H34V27C34 25.8954 34.8954 25 36 25H38C39.6569 25 41 23.6569 41 22C41 20.3431 39.6569 19 38 19H36C32.6863 19 30 21.6863 30 25V29H26C24.3431 29 23 30.3431 23 32C23 33.6569 24.3431 35 26 35H30V39C30 42.3137 32.6863 45 36 45H38C40.2091 45 42 43.2091 42 41C42 38.7909 40.2091 37 38 37H34V33H38C41.3137 33 44 30.3137 44 27C44 23.6863 41.3137 21 38 21H36C34.8954 21 34 21.8954 34 23V24Z" fill="white"/>
+</svg>
