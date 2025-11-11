@@ -60,8 +60,11 @@ export function FlipEducationCard({ education, index }: FlipEducationCardProps) 
         {/* Back of Card */}
         <div className="flip-back">
           <div className="flip-inner">
-            <div className="flip-location">{education.location}</div>
-            <div className="flip-duration">{duration}</div>
+            {/* Header Row with Location and Duration */}
+            <div className="flip-header-row">
+              <div className="flip-location">{education.location}</div>
+              <div className="flip-duration">{duration}</div>
+            </div>
 
             {/* Stats Info */}
             {education.stats && education.stats.length >= 4 && (
