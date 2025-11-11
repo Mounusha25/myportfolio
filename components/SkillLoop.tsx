@@ -40,8 +40,8 @@ const iconifyIdMap: Record<string, string> = {
   Tableau: "simple-icons:tableau",
   "Power BI": "simple-icons:powerbi",
   Streamlit: "simple-icons:streamlit",
-  Matplotlib: "simple-icons:matplotlib",
-  Seaborn: "simple-icons:seaborn",
+  // Prefer Devicon (Python) or generic chart for these; no official devicon
+  // Matplotlib/Seaborn will be resolved via getDeviconClass or fallback
   Excel: "vscode-icons:file-type-excel",
   "Statistical Modeling": "mdi:chart-box-outline",
   "Linear Optimization (CPLEX)": "mdi:chart-line-variant",
@@ -77,6 +77,7 @@ function getDeviconClass(name: string): string | null {
     [/d3\.js|d3js|d3/, "devicon-d3js-plain colored"],
     [/git/, "devicon-git-plain colored"],
     [/julia/, "devicon-julia-plain colored"],
+    [/matplotlib|seaborn/, "devicon-python-plain colored"],
   ]
   for (const [re, cls] of map) if (re.test(n)) return cls
   return null
@@ -155,7 +156,7 @@ function Row({
                 ) : icon.type === 'devicon' ? (
                   <i className={`${icon.value}`}></i>
                 ) : (
-                  <i className="devicon-git-plain colored"></i>
+                  <img src={`https://api.iconify.design/tabler:chart-bar.svg?color=%23${themeColor}`} alt="" />
                 )}
               </div>
               <div className="label">{it.name}</div>
