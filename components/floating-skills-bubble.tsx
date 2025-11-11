@@ -70,12 +70,12 @@ const skillsData: SkillData[] = [
   { name: "Astro", category: "misc", connections: ["D3.js", "REST APIs"] },
 ]
 
-// Aurora Dream palette per categories
+// Aurora Dream palette per categories (hex format for canvas compatibility)
 const categoryColors = {
-  dsml: "rgba(175, 109, 255, 0.9)", // Data Science & ML - Purple
-  de: "rgba(255, 100, 180, 0.9)", // Data Engineering & Infra - Pink
-  viz: "rgba(255, 235, 170, 0.9)", // Analytics & Visualization - Yellow
-  misc: "rgba(120, 190, 255, 0.9)", // Additional Proficiencies - Blue
+  dsml: "#af6dff", // Data Science & ML - Purple
+  de: "#ff64b4", // Data Engineering & Infra - Pink
+  viz: "#ffebaa", // Analytics & Visualization - Yellow
+  misc: "#78beff", // Additional Proficiencies - Blue
 }
 
 
