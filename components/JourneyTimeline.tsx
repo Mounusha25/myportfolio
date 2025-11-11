@@ -16,49 +16,49 @@ const moments: Moment[] = [
     title: "DevHacks S1",
     date: "March 2025",
     month: "Mar",
-    image: "/images/moments/devhackss1.jpg"
+    image: "/images/Moments/devhackss1.png"
   },
   {
     title: "HackAZona",
     date: "March 2025",
     month: "Mar",
-    image: "/images/moments/Hackazona.jpg"
+    image: "/images/Moments/Hackazona.png"
   },
   {
     title: "Techipalooza Conference",
     date: "August 2025",
     month: "Aug",
-    image: "/images/moments/techipaloozaconf.jpg"
+    image: "/images/Moments/techipaloozaconf.png"
   },
   {
     title: "DevHacks S2 (Winning Edition)",
     date: "August 2025",
     month: "Aug",
-    image: "/images/moments/devhackss2.jpeg"
+    image: "/images/Moments/devhackss2.png"
   },
   {
     title: "Hacks for Humanity",
     date: "October 2025",
     month: "Oct",
-    image: "/images/moments/HHH.JPG"
+    image: "/images/Moments/HHH.png"
   },
   {
     title: "Data Conference (ASU)",
     date: "November 2025",
     month: "Nov",
-    image: "/images/moments/Dataconf.jpg"
+    image: "/images/Moments/Dataconf.png"
   },
   {
     title: "Workshop Conducted",
     date: "November 2025",
     month: "Nov",
-    image: "/images/moments/Workshop.jpg"
+    image: "/images/Moments/Workshop.png"
   },
   {
     title: "Mentorship (Claude Builder Hackathon)",
     date: "November 2025",
     month: "Nov",
-    image: "/images/moments/mentorship.jpg"
+    image: "/images/Moments/mentorship.png"
   }
 ]
 
