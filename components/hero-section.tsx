@@ -26,7 +26,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="grid md:grid-cols-2 gap-8 items-center"
+          className="grid sm:grid-cols-2 gap-8 items-center"
         >
           {/* Date pill */}
           <motion.div
@@ -78,24 +78,50 @@ export function HeroSection() {
                 className="object-contain object-center scale-[1.08] drop-shadow-xl"
                 sizes="(min-width: 768px) 480px, 320px"
               />
-              {/* Floating socials */}
-              <a href="https://github.com/VishalLakshmiNarayanan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="absolute -left-5 top-10 w-11 h-11 rounded-full bg-white/90 border shadow flex items-center justify-center hover:scale-105 transition">
-                <Github className="w-5 h-5 text-black" />
-              </a>
-              <a href="https://linkedin.com/in/vishal-lakshmi-narayanan-687619324" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="absolute -right-4 top-20 w-11 h-11 rounded-full bg-white/90 border shadow flex items-center justify-center hover:scale-105 transition">
-                <Linkedin className="w-5 h-5 text-black" />
-              </a>
-              <a href="https://medium.com/@lvishal1607" target="_blank" rel="noopener noreferrer" aria-label="Medium" className="absolute -left-3 bottom-16 w-11 h-11 rounded-full bg-white/90 border shadow flex items-center justify-center hover:scale-105 transition">
-                <span className="text-sm font-bold text-black">M</span>
-              </a>
-              <a href="https://leetcode.com/u/lvleetcode/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="absolute -right-5 bottom-6 w-11 h-11 rounded-full bg-white/90 border shadow flex items-center justify-center hover:scale-105 transition">
-                <span className="text-xs font-bold text-black">LC</span>
-              </a>
+              {/* Floating socials removed per request (restored bottom buttons) */}
             </div>
+          </div>
+          {/* Socials buttons under hero */}
+          <div className="sm:col-span-2 flex flex-wrap justify-center gap-4 mt-6">
+            <a
+              href="https://github.com/VishalLakshmiNarayanan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-social-btn github"
+            >
+              <Github className="icon w-5 h-5" />
+              <span className="text font-medium">GitHub</span>
+            </a>
+            <a
+              href="https://linkedin.com/in/vishal-lakshmi-narayanan-687619324"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-social-btn linkedin"
+            >
+              <Linkedin className="icon w-5 h-5" />
+              <span className="text font-medium">LinkedIn</span>
+            </a>
+            <a
+              href="https://medium.com/@lvishal1607"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-social-btn medium"
+            >
+              <span className="icon text-lg font-bold">M</span>
+              <span className="text font-medium">Medium</span>
+            </a>
+            <a
+              href="https://leetcode.com/u/lvleetcode/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-social-btn leetcode"
+            >
+              <span className="icon text-sm font-bold">LC</span>
+              <span className="text font-medium">LeetCode</span>
+            </a>
           </div>
         </motion.div>
       </div>
     </section>
   )
 }
-
