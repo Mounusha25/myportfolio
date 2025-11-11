@@ -45,7 +45,7 @@ export function ProjectCard({ project, index = 0, active = false, animated = fal
           <div className="space-y-3">
             {project.tech?.length ? (
               <div>
-                <h4 className="text-sm font-medium mb-2">Tech Stack</h4>
+                <h4 className="text-sm font-medium mb-2 accent-text">Tech Stack</h4>
                 <div className="flex flex-wrap gap-1">
                   {project.tech.map((tech) => (
                     <Badge key={tech} variant="secondary" className="text-xs">
@@ -58,7 +58,7 @@ export function ProjectCard({ project, index = 0, active = false, animated = fal
 
             {project.tags?.length ? (
               <div>
-                <h4 className="text-sm font-medium mb-2">Tags</h4>
+                <h4 className="text-sm font-medium mb-2 accent-text">Tags</h4>
                 <div className="flex flex-wrap gap-1">
                   {project.tags.map((tag) => (
                     <Badge key={tag} className="text-xs badge-accent">

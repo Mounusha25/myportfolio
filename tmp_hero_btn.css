@@ -1,0 +1,95 @@
+  color: #00ab6c;
+}
+
+.social-icon.leetcode .icon {
+  color: #ffa116;
+}
+
+.social-icon.email .icon {
+  color: #ea4335;
+}
+
+/* Hero section social buttons with text */
+.hero-social-btn {
+  @apply relative overflow-hidden rounded-full border-2 border-muted-foreground/20 bg-background transition-all duration-300 ease-in-out px-4 py-2 flex items-center gap-2;
+  transform-style: preserve-3d;
+}
+
+.hero-social-btn::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  transition: top 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.hero-social-btn:hover::before {
+  top: 0;
+}
+
+.hero-social-btn .icon,
+.hero-social-btn .text {
+  @apply relative z-10 transition-all duration-300 ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.hero-social-btn:hover .icon {
+  transform: rotateY(360deg);
+  color: white !important;
+  filter: brightness(0) invert(1);
+}
+
+.hero-social-btn:hover .text {
+  color: white !important;
+}
+
+/* Hero platform-specific colors */
+.hero-social-btn.github::before {
+  background: #333;
+}
+
+.hero-social-btn.linkedin::before {
+  background: #0077b5;
+}
+
+.hero-social-btn.medium::before {
+  background: #00ab6c;
+}
+
+.hero-social-btn.leetcode::before {
+  background: #ffa116;
+}
+
+/* Hero default colors */
+.hero-social-btn.github .icon,
+.hero-social-btn.github .text {
+  color: #333;
+}
+
+.hero-social-btn.linkedin .icon,
+.hero-social-btn.linkedin .text {
+  color: #0077b5;
+}
+
+.hero-social-btn.medium .icon,
+.hero-social-btn.medium .text {
+  color: #00ab6c;
+}
+
+.hero-social-btn.leetcode .icon,
+.hero-social-btn.leetcode .text {
+  color: #ffa116;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .hover-underline-animation::before,
+  .hover-underline-animation::after {
+    height: 1.5px;
+  }
+
+  .hover-underline-animation::before {

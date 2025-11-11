@@ -771,3 +771,10 @@ html {
   color: rgb(var(--accent-rgb)) !important;
   border-color: rgba(var(--accent-rgb), .25) !important;
 }
+
+/* Accent text utility and hero overrides */
+.section-with-waves[class*="theme-"] .accent-text { color: rgb(var(--accent-rgb)); }
+.section-with-waves[class*="theme-"] h1 { color: rgb(var(--accent-rgb)); }
+.section-with-waves[class*="theme-"] .hero-social-btn::before { background: rgb(var(--accent-rgb)); }
+.section-with-waves[class*="theme-"] .hero-social-btn .icon,
+.section-with-waves[class*="theme-"] .hero-social-btn .text { color: rgb(var(--accent-rgb)); }
