@@ -1,300 +1,338 @@
-/* Moving Moments Gallery - Stacked Card Effect */
+/* Moving Moments Gallery - Stacked Card Animation */
 
-:root {
-  --moments-transition: 0.8s;
+*,
+::before,
+::after {
+  box-sizing: border-box;
 }
 
-/* CSS custom properties for animation */
-@property --p {
-  syntax: '<number>';
-  initial-value: 0;
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
   inherits: true;
 }
 
-@property --v {
-  syntax: '<number>';
-  initial-value: 0;
-  inherits: true;
-}
-
-.moments-stack-section {
-  /* Animation calculations */
-  --p: var(--k);
-  --abs-p: abs(calc(var(--k) - var(--p)));
-  --end: clamp(0, calc(var(--abs-p) - 1), 1);
-  --dir: calc((1 - 2 * var(--end)) * sign(calc(var(--k) - var(--p))));
-  --fwd: calc(0.5 * (1 + var(--dir)));
-  --v: var(--k);
-  --abs-v: abs(calc(var(--v) - var(--p)));
-  --prg: calc(var(--abs-v) / (1 - var(--end) + var(--end) * (var(--n) - 1)));
-
-  display: grid;
-  grid-gap: 0.5em 4em;
-  grid-template: repeat(2, max-content) 1fr max-content / max-content 1fr;
-  place-self: center;
-  margin: 0 auto;
-  padding: 2rem 2rem;
-  max-width: 1000px;
-  min-height: 500px;
-  position: relative;
-
-  color: #000000;
-  font-family: 'Inter', sans-serif;
-  counter-reset: k calc(1 + var(--k)) n var(--n);
-
-  transition: --p 0s var(--moments-transition), --v var(--moments-transition);
-}
-
-/* Counter display */
-.moments-counter::before {
-  content: counter(k) ' / ' counter(n);
-  grid-area: 1 / 2;
-  width: 4ch;
-  text-align: right;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-/* Stacked articles */
-.moment-article {
-  --abs-top: abs(calc(var(--k) - var(--i)));
-  --not-top: min(1, var(--abs-top));
-  --top: calc(1 - var(--not-top));
-  --val-mov: calc((1 - var(--fwd)) * var(--p) + var(--fwd) * var(--k) - var(--i));
-  --abs-mov: abs(var(--val-mov));
-  --not-mov: min(1, var(--abs-mov));
-  --mov: calc(1 - var(--not-mov));
-
-  grid-area: 1 / 1 / -1 / -1;
-  display: grid;
-  grid-template: subgrid / subgrid;
-  z-index: mod(calc(var(--n) - 1 + var(--i) - var(--k)), var(--n));
-  transition: z-index var(--moments-transition) cubic-bezier(1, -0.9, 0, 1.9);
-}
-
-/* Image wrapper */
-.moment-image-wrapper {
-  grid-area: 1 / 1 / -1;
-  position: relative;
-  width: 350px;
-  height: 450px;
-  border-radius: 16px;
+/* Hide radio buttons */
+input[type='radio'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
-  border: 2px solid rgba(175, 109, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px) saturate(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(180%);
-  transition: all 0.3s ease;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
-.moment-image-wrapper:hover {
-  border-color: rgba(175, 109, 255, 0.4);
-  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2), 0 0 20px rgba(175, 109, 255, 0.15);
+.moments-cards {
+  --img-w: 300px;
+  --duration: 300ms;
+  --img-easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: min(100% - 2rem, 900px);
+  margin-inline: auto;
+  display: grid;
+  counter-reset: my-counter;
+  padding: 2rem 1rem;
 }
 
-.moment-stack-image {
-  --sin: sin(calc(var(--prg) * 0.5turn));
-  width: 100%;
-  height: 100%;
+.moment-card {
+  --cards-grid-cols: auto;
+  --cards-grid-rows: var(--img-w) auto;
+  --cards-grid-gap: 2rem;
+  --cards-footer-justify: center;
+
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  grid-template-columns: var(--cards-grid-cols);
+  grid-template-rows: var(--cards-grid-rows);
+  gap: var(--cards-grid-gap);
+  z-index: -1;
+}
+
+@media (600px < width) {
+  .moment-card {
+    --cards-grid-cols: var(--img-w) auto;
+    --cards-grid-rows: auto;
+    --cards-grid-gap: 4rem;
+    --cards-footer-justify: start;
+  }
+}
+
+/* Image wrapper for Next.js Image */
+.moment-card-img-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  aspect-ratio: 1 / 1;
+  rotate: var(--angle, 0deg);
+  border-radius: 16px;
+  border: 3px solid rgba(175, 109, 255, 0.3);
+  overflow: hidden;
+  transform-origin: center;
+  box-shadow: 0 8px 24px rgba(31, 38, 135, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.moment-card-img {
   object-fit: cover;
-  translate: calc(-150% * var(--mov) * sqrt(var(--sin)));
-  rotate: calc((1 - var(--sin)) * var(--a));
-  transition: translate var(--moments-transition) ease-in-out,
-    rotate var(--moments-transition) ease-in-out;
 }
 
-/* Title */
-.moment-stack-title {
-  grid-area: 2 / 2;
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
+/* Stacking animations */
+input:nth-of-type(1):checked + div + .moment-card ~ .moment-card .moment-card-img-wrapper {
+  animation: straighten-img-1 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+.moment-card:has(~ div > input:nth-of-type(2):checked) .moment-card-img-wrapper,
+input:nth-of-type(2):checked + div + .moment-card ~ .moment-card .moment-card-img-wrapper {
+  animation: straighten-img-2 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+.moment-card:has(~ div > input:nth-of-type(3):checked) .moment-card-img-wrapper,
+input:nth-of-type(3):checked + div + .moment-card ~ .moment-card .moment-card-img-wrapper {
+  animation: straighten-img-3 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+.moment-card:has(~ div > input:nth-of-type(4):checked) .moment-card-img-wrapper,
+input:nth-of-type(4):checked + div + .moment-card ~ .moment-card .moment-card-img-wrapper {
+  animation: straighten-img-4 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+.moment-card:has(~ div > input:nth-of-type(5):checked) .moment-card-img-wrapper,
+input:nth-of-type(5):checked + div + .moment-card ~ .moment-card .moment-card-img-wrapper {
+  animation: straighten-img-5 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+.moment-card:has(~ div > input:nth-of-type(6):checked) .moment-card-img-wrapper,
+input:nth-of-type(6):checked + div + .moment-card ~ .moment-card .moment-card-img-wrapper {
+  animation: straighten-img-6 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+.moment-card:has(~ div > input:nth-of-type(7):checked) .moment-card-img-wrapper,
+input:nth-of-type(7):checked + div + .moment-card ~ .moment-card .moment-card-img-wrapper {
+  animation: straighten-img-7 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+.moment-card:has(~ div > input:nth-of-type(8):checked) .moment-card-img-wrapper,
+input:nth-of-type(8):checked + div + .moment-card ~ .moment-card .moment-card-img-wrapper {
+  animation: straighten-img-8 calc(var(--duration) * 2) forwards;
+  animation-timing-function: var(--img-easing);
+}
+
+@keyframes straighten-img-1 {
+  50% {
+    --angle: 0deg;
+  }
+}
+@keyframes straighten-img-2 {
+  50% {
+    --angle: 0deg;
+  }
+}
+@keyframes straighten-img-3 {
+  50% {
+    --angle: 0deg;
+  }
+}
+@keyframes straighten-img-4 {
+  50% {
+    --angle: 0deg;
+  }
+}
+@keyframes straighten-img-5 {
+  50% {
+    --angle: 0deg;
+  }
+}
+@keyframes straighten-img-6 {
+  50% {
+    --angle: 0deg;
+  }
+}
+@keyframes straighten-img-7 {
+  50% {
+    --angle: 0deg;
+  }
+}
+@keyframes straighten-img-8 {
+  50% {
+    --angle: 0deg;
+  }
+}
+
+/* Z-index stacking */
+input:checked + div + .moment-card {
+  z-index: 10 !important;
+}
+.moment-card:has(+ div > input:checked) {
+  z-index: 9;
+}
+.moment-card:has(+ div + .moment-card + div > input:checked) {
+  z-index: 8;
+}
+.moment-card:has(+ div + .moment-card + div + .moment-card + div > input:checked) {
+  z-index: 7;
+}
+.moment-card:has(+ div + .moment-card + div + .moment-card + div + .moment-card + div > input:checked) {
+  z-index: 6;
+}
+.moment-card:has(
+    + div
+      + .moment-card
+      + div
+      + .moment-card
+      + div
+      + .moment-card
+      + div
+      + .moment-card
+      + div
+      > input:checked
+  ) {
+  z-index: 5;
+}
+
+/* Card data styling */
+.moment-card-data {
+  display: grid;
+  gap: 1rem;
+  max-width: 450px;
+}
+
+.moment-card-num {
+  opacity: var(--data-opacity, 0);
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+}
+
+.moment-card-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   color: #000000;
-  margin: 0 0 1rem 0;
+  margin: 0;
   line-height: 1.2;
-  translate: 0 calc(var(--not-top) * 1lh);
-  opacity: var(--top);
-  transition: 0.4s calc(var(--top) * 0.4s);
-  transition-property: translate, opacity;
 }
 
-/* Description */
-.moment-stack-desc {
-  grid-area: 3 / 2;
-  font-size: 1rem;
+.moment-card-desc {
+  font-size: 0.95rem;
   line-height: 1.6;
   color: rgba(0, 0, 0, 0.8);
-  max-width: 450px;
   margin: 0;
-  translate: 0 calc(var(--not-top) * 1lh);
-  opacity: var(--top);
-  transition: 0.4s calc(var(--top) * 0.4s);
-  transition-property: translate, opacity;
 }
 
-.moment-stack-desc em {
+.moment-card-date {
+  font-weight: 600;
   color: rgba(0, 0, 0, 0.6);
   font-style: normal;
-  font-weight: 600;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
-/* Navigation buttons */
-.moments-nav-buttons {
+.moment-card-title,
+.moment-card-desc {
+  transition: var(--duration) ease-in-out;
+  transition-delay: var(--data-delay, 0ms);
+  opacity: var(--data-opacity, 0);
+  translate: 0 var(--data-y, 20px);
+}
+
+.moment-card-footer {
   display: flex;
-  gap: 1.5rem;
-  grid-area: 4 / 2;
-  z-index: calc((1 - min(1, var(--abs-p))) * var(--n));
-  margin-top: 1rem;
+  justify-content: var(--cards-footer-justify);
+  gap: 2rem;
+  margin-top: 0.5rem;
 }
 
-.nav-btn {
-  --sgn: -1;
-  --prc: calc(var(--hov, 0) * 100%);
-  --c: color-mix(in hsl, #af6dff var(--prc), #6b7280);
-
-  border: none;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background: color-mix(in hsl, #af6dff 20%, rgba(255, 255, 255, 0.9));
-  border: 2px solid rgba(175, 109, 255, 0.3);
-  color: #af6dff;
-  font-size: 1.5rem;
-  font-weight: 900;
+.moment-nav-btn {
   cursor: pointer;
-  position: relative;
-  box-shadow: 0 4px 12px rgba(175, 109, 255, 0.2);
-  transition: all 0.3s ease-out;
+  pointer-events: var(--card-events, none);
+  opacity: var(--data-opacity, 0);
+  transition: color var(--duration) ease-in-out;
+  color: var(--label-clr-txt, #ffffff);
+  background-color: var(--label-clr-bg, #af6dff);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-content: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out,
+    transform 200ms ease;
+  box-shadow: 0 4px 12px rgba(175, 109, 255, 0.3);
+  border: 2px solid rgba(175, 109, 255, 0.2);
 }
 
-.nav-btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) translate(calc(var(--sgn) * -15%), 0)
-    rotate(45deg) scale(var(--sgn));
-  border: solid 2px currentColor;
-  border-width: 2px 2px 0 0;
-  width: 35%;
-  aspect-ratio: 1;
+input:checked:focus-visible + div + .moment-card .moment-nav-btn,
+.moment-nav-btn:hover {
+  --label-clr-txt: #ffffff;
+  --label-clr-bg: #9147ff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(145, 71, 255, 0.5);
 }
 
-.nav-btn[data-inc='1'] {
-  --sgn: 1;
+input:checked + div + .moment-card {
+  --data-opacity: 1;
+  --data-y: 0;
+  --data-delay: var(--duration);
+  --card-events: auto;
+  transition: z-index;
+  transition-delay: 300ms;
 }
 
-.nav-btn:is(:hover, :focus) {
-  --hov: 1;
-  background: color-mix(in hsl, #af6dff 30%, rgba(255, 255, 255, 0.95));
-  border-color: rgba(175, 109, 255, 0.6);
-  box-shadow: 0 6px 20px rgba(175, 109, 255, 0.35);
-  transform: translateY(-2px);
+input:checked + div + .moment-card .moment-card-img-wrapper {
+  animation: reveal-img calc(var(--duration) * 2) forwards;
 }
 
-.nav-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(175, 109, 255, 0.25);
+@keyframes reveal-img {
+  50% {
+    translate: -150% 0;
+    --angle: 0deg;
+  }
 }
 
 /* Responsive adjustments */
-@media (max-width: 1024px) {
-  .moments-stack-section {
-    grid-template: repeat(2, max-content) 1fr max-content / 1fr;
-    grid-gap: 1.5em;
-    padding: 3rem 1.5rem;
+@media (max-width: 768px) {
+  .moments-cards {
+    --img-w: 260px;
+    padding: 1rem 0.5rem;
   }
 
-  .moment-image-wrapper {
-    grid-area: 1 / 1;
-    width: 300px;
-    height: 380px;
-    margin: 0 auto;
+  .moment-card-img-wrapper {
+    width: 260px;
+    height: 260px;
   }
 
-  .moments-counter::before {
-    grid-area: 1 / 1;
-    text-align: center;
-    width: 100%;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    text-align: right;
-  }
-
-  .moment-stack-title {
-    grid-area: 2 / 1;
-    text-align: center;
-  }
-
-  .moment-stack-desc {
-    grid-area: 3 / 1;
+  .moment-card-data {
     text-align: center;
     max-width: 100%;
   }
 
-  .moments-nav-buttons {
-    grid-area: 4 / 1;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .moments-stack-section {
-    padding: 2rem 1rem;
-    min-height: 500px;
-  }
-
-  .moment-image-wrapper {
-    width: 260px;
-    height: 340px;
-  }
-
-  .moment-stack-title {
+  .moment-card-title {
     font-size: 1.5rem;
   }
 
-  .moment-stack-desc {
-    font-size: 0.9rem;
+  .moment-card-desc {
+    font-size: 0.875rem;
   }
 
-  .nav-btn {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-
-/* Fallback for browsers without CSS math functions support */
-@supports not (scale: abs(-2)) {
-  .moments-stack-section {
-    --abs-p: max(calc(var(--k) - var(--p)), calc(var(--p) - var(--k)));
-    --abs-v: max(calc(var(--v) - var(--p)), calc(var(--p) - var(--v)));
-  }
-
-  .moment-article {
-    --abs-top: max(calc(var(--k) - var(--i)), calc(var(--i) - var(--k)));
-    --abs-mov: max(var(--val-mov), calc(-1 * var(--val-mov)));
-  }
-}
-
-@supports not (scale: sign(-2)) {
-  .moments-stack-section {
-    --dir: clamp(-1, calc((var(--k) - var(--p)) * 100000), 1);
+  .moment-nav-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
   }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .moments-stack-section,
-  .moment-article,
-  .moment-stack-image,
-  .moment-stack-title,
-  .moment-stack-desc,
-  .nav-btn {
-    transition: none;
-    animation: none;
+  .moment-card-img-wrapper,
+  .moment-card-title,
+  .moment-card-desc,
+  .moment-nav-btn {
+    animation: none !important;
+    transition: none !important;
   }
 }
