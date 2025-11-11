@@ -28,7 +28,7 @@ export function HeroSection() {
               <GlassFlipper className="mx-0" />
             </div>
             <p className="text-base md:text-lg text-black/80 max-w-2xl leading-relaxed font-medium">
-              I build AI platforms, backends, and data science systems — from DevLabs’ Builder Intelligence to TailShield for catastrophic loss forecasting. I focus on systems that learn, adapt, and scale.
+              I’m Vishal Lakshmi Narayanan, a data science enthusiast who loves turning complex problems into simple, intelligent solutions. I explore how AI, analytics, and real-world data can work together to drive innovation and make technology more human.
             </p>
 
             {/* Social buttons positioned above stats */}
