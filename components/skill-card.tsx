@@ -87,7 +87,7 @@ function getDeviconClass(name: string): string | null {
   const map: Array<[RegExp, string]> = [
     [/^python$/, "devicon-python-plain colored"],
     [/^r$/, "devicon-r-plain colored"],
-    [/scikit|sklearn/, "devicon-scikitlearn-original colored"],
+    [/scikit|sklearn/, "devicon-scikitlearn-plain colored"],
     [/tensorflow/, "devicon-tensorflow-original colored"],
     [/pytorch|torch/, "devicon-pytorch-original colored"],
     [/^sql$/, null as unknown as string],
@@ -107,6 +107,15 @@ function getDeviconClass(name: string): string | null {
     [/git/, "devicon-git-plain colored"],
     [/julia/, "devicon-julia-plain colored"],
     [/astro/, "devicon-astro-plain colored"],
+    // Approximations for items without exact Devicon glyphs
+    [/matplotlib/, "devicon-anaconda-original colored"],
+    [/seaborn/, "devicon-anaconda-original colored"],
+    [/excel/, "devicon-microsoft-plain colored"],
+    [/api integration|rest api|rest apis|rest\b/i, "devicon-postman-plain colored"],
+    [/postman/, "devicon-postman-plain colored"],
+    [/ci\/?cd|pipeline/, "devicon-githubactions-plain colored"],
+    [/mlflow/, "devicon-python-plain colored"],
+    [/databricks/, "devicon-apachespark-original colored"],
   ]
 
   for (const [re, cls] of map) {

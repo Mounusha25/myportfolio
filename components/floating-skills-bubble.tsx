@@ -84,21 +84,22 @@ export function FloatingSkillsBubble() {
   const bubblesRef = useRef<Bubble[]>([])
   const animationRef = useRef<number>()
   const iconImagesRef = useRef<Record<string, HTMLImageElement>>({})
+  const failedIconsRef = useRef<Set<string>>(new Set())
 
   // Map of skill name -> Devicon SVG URL
   const deviconUrlMap: Record<string, string> = useMemo(() => ({
     Python: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     R: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg",
-    "Scikit-learn": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg",
+    "Scikit-learn": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-plain.svg",
     TensorFlow: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
     PyTorch: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
     SQL: "",
     PySpark: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg",
-    Databricks: "",
+    Databricks: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg", // approx
     "Apache Airflow": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-plain.svg",
-    MLflow: "",
+    MLflow: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", // approx
     Docker: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-    "REST APIs": "",
+    "REST APIs": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg", // approx
     MySQL: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
     PostgreSQL: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
     "SQL Server": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
@@ -108,24 +109,24 @@ export function FloatingSkillsBubble() {
     Tableau: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tableau/tableau-original.svg",
     "Power BI": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg",
     Streamlit: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg",
-    Matplotlib: "",
-    Seaborn: "",
-    Excel: "",
-    "Statistical Modeling": "",
-    "Linear Optimization (CPLEX)": "",
+    Matplotlib: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/anaconda/anaconda-original.svg", // approx
+    Seaborn: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/anaconda/anaconda-original.svg", // approx
+    Excel: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoft/microsoft-original.svg", // approx
+    "Statistical Modeling": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg", // approx
+    "Linear Optimization (CPLEX)": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/julia/julia-original.svg", // approx
     "D3.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/d3js/d3js-original.svg",
     Git: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-    "API Integration": "",
-    "n8n Workflows": "",
+    "API Integration": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg", // approx
+    "n8n Workflows": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", // approx
     Julia: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/julia/julia-original.svg",
-    "CI/CD pipelines": "",
+    "CI/CD pipelines": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-plain.svg", // approx
     Astro: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg",
-    "Time Series Analysis": "",
-    "Causal Inference": "",
-    "A/B Testing": "",
-    NLP: "",
-    "Recommendation Systems": "",
-    "LLM Integration": "",
+    "Time Series Analysis": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", // approx
+    "Causal Inference": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg", // approx
+    "A/B Testing": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg", // approx
+    NLP: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg", // approx
+    "Recommendation Systems": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", // approx
+    "LLM Integration": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg", // approx
   }), [])
 
   useEffect(() => {
@@ -140,8 +141,13 @@ export function FloatingSkillsBubble() {
       if (!url) return
       const img = new Image()
       img.crossOrigin = "anonymous"
+      img.onload = () => {
+        iconImagesRef.current[name] = img
+      }
+      img.onerror = () => {
+        failedIconsRef.current.add(name)
+      }
       img.src = url
-      iconImagesRef.current[name] = img
     })
 
     const resizeCanvas = () => {
@@ -360,9 +366,18 @@ export function FloatingSkillsBubble() {
 
         // Draw devicon image if available, else fallback to text
         const img = iconImagesRef.current[bubble.skill]
-        if (img && img.complete) {
-          const size = Math.min(bubble.radius * 1.4, 44)
-          ctx.drawImage(img, bubble.x - size / 2, bubble.y - size / 2, size, size)
+        if (img && img.complete && (img as any).naturalWidth > 0) {
+          try {
+            const size = Math.min(bubble.radius * 1.4, 44)
+            ctx.drawImage(img, bubble.x - size / 2, bubble.y - size / 2, size, size)
+          } catch {
+            // If draw fails for any reason, fallback to text
+            ctx.fillStyle = "#000000"
+            ctx.font = "bold 11px Inter"
+            ctx.textAlign = "center"
+            ctx.textBaseline = "middle"
+            ctx.fillText(bubble.skill, bubble.x, bubble.y)
+          }
         } else {
           // Fallback label
           ctx.fillStyle = "#000000"
