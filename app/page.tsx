@@ -41,9 +41,10 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation text-black">Skills</h2>
           </div>
-          <div className="max-w-6xl mx-auto">
-            <SkillLoop />
-          </div>
+        </div>
+        {/* Full-bleed skill marquee */}
+        <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+          <SkillLoop />
         </div>
       </section>
 
