@@ -36,8 +36,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <div className="min-h-screen w-full relative bg-[#f0fdfa] text-gray-800 mint-theme">
 
-            {/* Vercel Grid */
-            {/* Mint Fresh Breeze Background */
+            {/* Vercel Grid */}
+            {/* Mint Fresh Breeze Background */}
             <div
               className="absolute inset-0 z-0 pointer-events-none"
               style={{
