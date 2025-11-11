@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import type { Award } from "@/lib/content"
 import "./moments-gallery.css"
 
@@ -34,6 +35,7 @@ export default function MomentsGallery({ moments }: MomentsGalleryProps) {
                         muted
                         loop
                         playsInline
+                        preload="none"
                         onMouseEnter={(e) => e.currentTarget.play()}
                         onMouseLeave={(e) => {
                           e.currentTarget.pause()
@@ -41,10 +43,14 @@ export default function MomentsGallery({ moments }: MomentsGalleryProps) {
                         }}
                       />
                     ) : (
-                      <img
+                      <Image
                         src={moment.image || '/images/placeholder.jpg'}
                         alt={moment.title}
                         className="moment-media"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 400px"
+                        quality={85}
+                        priority={index < 2}
                       />
                     )}
                   </div>
