@@ -33,16 +33,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <div className="min-h-screen w-full relative bg-black">
-            {/* Emerald Depths radial glow (keep this) */}
-            <div
-              className="absolute inset-0 z-0"
-              style={{
-                background:
-                  "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(16,185,129,0.25), transparent 70%), #000000",
-              }}
-            />
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          <div className="min-h-screen w-full relative crosshatch-bg bg-white text-gray-800">
 
             {/* ✅ Waves (bottom). Optional: duplicate with `emerald-waves-top` for top waves */}
            

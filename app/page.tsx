@@ -29,12 +29,12 @@ export default function HomePage() {
   return (
     <div className="min-h-screen relative" id="top">
       {/* Hero */}
-      <WavySection id="home" bottom>
+      <WavySection id="home" bottom className="theme-sky">
         <HeroSection />
       </WavySection>
 
       {/* Skills */}
-      <WavySection id="skills" top bottom className="crosshatch-bg bg-white text-gray-800">
+      <WavySection id="skills" top bottom className="theme-blue">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Skills</h2>
@@ -51,7 +51,7 @@ export default function HomePage() {
       </WavySection>
 
       {/* Experience */}
-      <WavySection id="experience" top bottom className="bg-emerald-500/5">
+      <WavySection id="experience" top bottom className="theme-emerald">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Experience</h2>
@@ -61,7 +61,7 @@ export default function HomePage() {
       </WavySection>
 
       {/* Featured Projects */}
-      <WavySection id="projects" top bottom>
+      <WavySection id="projects" top bottom className="theme-indigo">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Featured Projects</h2>
@@ -71,7 +71,7 @@ export default function HomePage() {
       </WavySection>
 
       {/* Education */}
-      <WavySection id="education" top bottom className="bg-emerald-500/5">
+      <WavySection id="education" top bottom className="theme-amber">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Education</h2>
@@ -85,7 +85,7 @@ export default function HomePage() {
       </WavySection>
 
       {/* Awards */}
-      <WavySection id="awards" top bottom>
+      <WavySection id="awards" top bottom className="theme-rose">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Awards & Recognition</h2>
@@ -99,7 +99,7 @@ export default function HomePage() {
       </WavySection>
 
       {/* Publications */}
-      <WavySection id="publications" top bottom className="bg-emerald-500/5">
+      <WavySection id="publications" top bottom className="theme-cyan">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Publications</h2>
@@ -113,7 +113,7 @@ export default function HomePage() {
       </WavySection>
 
       {/* Certifications */}
-      <WavySection id="certifications" top bottom>
+      <WavySection id="certifications" top bottom className="theme-violet">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Certifications</h2>
@@ -131,7 +131,7 @@ export default function HomePage() {
       </WavySection>
 
       {/* Contact */}
-      <WavySection id="contact" top className="bg-emerald-500/5">
+      <WavySection id="contact" top className="theme-emerald">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Contact</h2>

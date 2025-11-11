@@ -590,7 +590,12 @@ html {
   width: 200%;
   height: 10em;
   border-radius: 1000% 1000% 0 0;
-  background: linear-gradient(to bottom, rgba(16,185,129,.22), rgba(16,185,129,.08));
+  /* Use theme variable for wave color */
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--wave-rgb, 16,185,129), .22),
+    rgba(var(--wave-rgb, 16,185,129), .08)
+  );
   transform: translate3d(0,0,0);
   opacity: .26;
   animation: emerald-wave 12s -3s linear infinite;
@@ -648,3 +653,22 @@ html {
     repeating-linear-gradient(112.5deg, transparent, transparent 2px, rgba(55,65,81,0.04) 2px, rgba(55,65,81,0.04) 3px, transparent 3px, transparent 8px),
     repeating-linear-gradient(157.5deg, transparent, transparent 2px, rgba(31,41,55,0.03) 2px, rgba(31,41,55,0.03) 3px, transparent 3px, transparent 8px);
 }
+
+/* Section theme helpers: set wave color and light tint background + heading color */
+.section-with-waves.theme-emerald { --wave-rgb: 16,185,129; background-color: rgba(16,185,129,.05); }
+.section-with-waves.theme-blue    { --wave-rgb: 59,130,246; background-color: rgba(59,130,246,.05); }
+.section-with-waves.theme-indigo  { --wave-rgb: 99,102,241; background-color: rgba(99,102,241,.05); }
+.section-with-waves.theme-violet  { --wave-rgb: 139,92,246; background-color: rgba(139,92,246,.05); }
+.section-with-waves.theme-cyan    { --wave-rgb: 6,182,212;  background-color: rgba(6,182,212,.05); }
+.section-with-waves.theme-rose    { --wave-rgb: 244,63,94;  background-color: rgba(244,63,94,.05); }
+.section-with-waves.theme-amber   { --wave-rgb: 245,158,11; background-color: rgba(245,158,11,.06); }
+.section-with-waves.theme-sky     { --wave-rgb: 14,165,233; background-color: rgba(14,165,233,.05); }
+
+.section-with-waves.theme-emerald h2 { color: rgb(16,185,129); }
+.section-with-waves.theme-blue    h2 { color: rgb(59,130,246); }
+.section-with-waves.theme-indigo  h2 { color: rgb(99,102,241); }
+.section-with-waves.theme-violet  h2 { color: rgb(139,92,246); }
+.section-with-waves.theme-cyan    h2 { color: rgb(6,182,212); }
+.section-with-waves.theme-rose    h2 { color: rgb(244,63,94); }
+.section-with-waves.theme-amber   h2 { color: rgb(245,158,11); }
+.section-with-waves.theme-sky     h2 { color: rgb(14,165,233); }
