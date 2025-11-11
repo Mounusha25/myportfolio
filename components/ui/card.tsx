@@ -6,18 +6,9 @@ const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("neo-card text-card-foreground", className)}
-    {...props}
-  >
-    <div className="neo-card__dot" />
-    <div className={cn("neo-card__inner holographic-card")}>
-      <div className="neo-card__ray" />
-      <div className="neo-card__line topl" />
-      <div className="neo-card__line bottoml" />
-      <div className="neo-card__line leftl" />
-      <div className="neo-card__line rightl" />
+  <div ref={ref} className={cn("mint-card text-card-foreground", className)} {...props}>
+    <div className="mint-card__bg holographic-card">
+      <div className="mint-card__blob" />
       {children}
     </div>
   </div>
