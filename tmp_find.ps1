@@ -1,1 +1,1 @@
- = Get-Content components/SkillLoop.tsx -Raw; .IndexOf('const themeColor')
+= Get-Content components/SkillLoop.tsx -Raw; .IndexOf('const themeColor')

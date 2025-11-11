@@ -109,4 +109,3 @@
 
 @keyframes sg-spin-out { from { rotate: 0; } to { rotate: 360deg; } }
 @keyframes sg-spin-in { from { transform: rotate(0); } to { transform: rotate(360deg); } }
-
