@@ -14,8 +14,6 @@ const categoryLabels: Record<Certification["category"], string> = {
 
 const circleColors = ["#f9b234", "#3ecd5e", "#e44002", "#952aff", "#cd3e94", "#4c49ea", "#ff6f91"]
 
-const stars = ["\u2605", "\u2605", "\u2605"]
-
 const formatDate = (dateString: string) =>
   new Date(dateString).toLocaleDateString("en-US", {
     month: "long",
@@ -34,6 +32,7 @@ export function CertificationBadges({ certifications }: CertificationBadgesProps
         const style: CSSProperties = {
           ["--circle-color" as keyof CSSProperties]: accentColor,
         }
+        const title = certification.title.toUpperCase()
 
         return (
           <a
@@ -48,14 +47,13 @@ export function CertificationBadges({ certifications }: CertificationBadgesProps
             <div className={styles.badgeCard} style={style}>
               <div className={styles.badgeCircle} />
               <span className={styles.badgeCategory}>{categoryLabels[certification.category]}</span>
-              <div className={styles.badgeTitle}>{certification.title}</div>
+              <div className={styles.badgeTitle}>{title}</div>
               <div className={styles.badgeDateBox}>
-                Start:
+                Issued:
                 <span className={styles.badgeDate}>{formatDate(certification.date)}</span>
               </div>
               <div className={styles.badgeMeta}>
-                {certification.organization}
-                <span className={styles.badgeStars}>{stars.join(" ")}</span>
+                <span className={styles.badgeOrg}>{certification.organization}</span>
               </div>
             </div>
           </a>

@@ -1,16 +1,14 @@
 .badgeGrid {
-  width: min(1142px, 100%);
+  width: min(1100px, 100%);
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
 }
 
 .badgeCard {
-  width: 220px;
-  height: 320px;
+  width: 100%;
+  min-height: 240px;
   border-radius: 28px;
   background: #121212;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -77,26 +75,19 @@
 .badgeCard:hover .badgeDate {
   color: #fff;
 }
-
 .badgeMeta {
   margin-top: auto;
   text-transform: uppercase;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.25em;
   font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.badgeStars {
-  display: block;
-  margin-top: 0.35rem;
-  letter-spacing: 0.8em;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.6);
-  transition: letter-spacing 0.35s ease;
-}
-
-.badgeCard:hover .badgeStars {
-  letter-spacing: 1.1em;
+.badgeOrg {
+  line-height: 1.2;
+  letter-spacing: 0.4em;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 @media (max-width: 979px) {
