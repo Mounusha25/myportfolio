@@ -176,18 +176,24 @@ export default function SkillLoop() {
       if (!cat) continue
       for (const s of g.skills) all.push({ name: s, cat })
     }
-    // split into ~3 equal rows
-    const third = Math.ceil(all.length / 3)
-    return [all.slice(0, third), all.slice(third, third * 2), all.slice(third * 2)]
+    // split into 4 equal rows
+    const quarter = Math.ceil(all.length / 4)
+    return [
+      all.slice(0, quarter),
+      all.slice(quarter, quarter * 2),
+      all.slice(quarter * 2, quarter * 3),
+      all.slice(quarter * 3)
+    ]
   }, [])
 
   return (
     <div className="skills-loop w-full">
       <div className="content">
         <div className="tag-list">
-          <Row items={rows[0]} duration="50s" />
-          <Row items={rows[1]} duration="65s" reverse />
-          <Row items={rows[2]} duration="80s" />
+          <Row items={rows[0]} duration="45s" />
+          <Row items={rows[1]} duration="55s" reverse />
+          <Row items={rows[2]} duration="65s" />
+          <Row items={rows[3]} duration="75s" reverse />
           <div className="fade-overlay" />
         </div>
       </div>
