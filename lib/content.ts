@@ -328,14 +328,15 @@ export const publications: Publication[] = [
 
 export const awards: Award[] = [
   {
-    title: "1st Place — DevHacks S2",
-    organization: "DevHacks",
-    date: "2025-09-22",
-    description:
-      "Won 1st place for building SlideSage AI — an AI-powered learning assistant that transforms dense concepts into short, dialogue-based explainer videos with quizzes, streaks, and badges.",
-    category: "hackathon",
-    image: "/images/awards/DevhacksS2.mp4",
-  },
+  title: "1st Place — DevHacks S2",
+  organization: "DevHacks",
+  date: "2025-09-22", 
+  description:
+    "Won 1st place for building SlideSage AI — an AI-powered learning assistant that transforms dense concepts into short, dialogue-based explainer videos with quizzes, streaks, and badges. If a student doesn’t understand a concept the first time, SlideSage instantly regenerates a new video with fresh analogies or examples until it clicks. The goal: make learning adaptive, fun, and addictive.",
+  category: "hackathon",
+  image: "/images/awards/dev.png",
+},
+
   {
     title: "People's Choice Award",
     organization: "HackAZona v0.1",
@@ -343,34 +344,16 @@ export const awards: Award[] = [
     description:
       "Developed PlanWiseAI, an AI-based travel planner utilizing multi-agent systems to generate dynamic, real-time itineraries. Recognized for creativity and user-centered design approach.",
     category: "hackathon",
-    image: "/images/awards/HackazonaV0.1.mp4",
+    image: "/images/awards/hackazona.png",
   },
   {
-    title: "Hackathon Mentorship Role",
-    organization: "Community Leadership",
-    date: "2024-11-01",
+    title: "Runner-Up",
+    organization: "GIBots Hackathon",
+    date: "2023-02-01",
     description:
-      "Guided and mentored participants in hackathon events, sharing knowledge and helping teams bring their innovative ideas to life.",
-    category: "recognition",
-    image: "/images/awards/HackathonMentorshipRole.mp4",
-  },
-  {
-    title: "Hacks For Humanity",
-    organization: "Social Impact Hackathon",
-    date: "2024-08-01",
-    description:
-      "Participated in Hacks For Humanity, developing solutions to address real-world humanitarian challenges through technology.",
+      "Built a machine learning solution for a real-world societal challenge. Demonstrated innovative thinking in AI deployment and impact-driven technology.",
     category: "hackathon",
-    image: "/images/awards/HacksForHumanity.JPG",
-  },
-  {
-    title: "Portfolio Building Workshop",
-    organization: "Career Development",
-    date: "2024-06-01",
-    description:
-      "Led a hands-on workshop teaching students and professionals how to build impactful portfolios that showcase their skills and projects effectively.",
-    category: "recognition",
-    image: "/images/awards/PortfolioBuildingWorkshop.jpg",
+    image: "/images/awards/gibots.png",
   },
 ]
 
