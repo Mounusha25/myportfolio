@@ -1,0 +1,14 @@
+              {/* Floating socials around the image */}
+              <a href="https://github.com/VishalLakshmiNarayanan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="absolute -left-5 top-10 w-11 h-11 rounded-full bg-white/90 border shadow flex items-center justify-center hover:scale-105 transition">
+                <Github className="w-5 h-5 text-black" />
+              </a>
+              <a href="https://linkedin.com/in/vishal-lakshmi-narayanan-687619324" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="absolute -right-4 top-20 w-11 h-11 rounded-full bg-white/90 border shadow flex items-center justify-center hover:scale-105 transition">
+                <Linkedin className="w-5 h-5 text-black" />
+              </a>
+              <a href="https://medium.com/@lvishal1607" target="_blank" rel="noopener noreferrer" aria-label="Medium" className="absolute -left-3 bottom-16 w-11 h-11 rounded-full bg-white/90 border shadow flex items-center justify-center hover:scale-105 transition">
+                <span className="text-sm font-bold text-black">M</span>
+              </a>
+              <a href="https://leetcode.com/u/lvleetcode/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="absolute -right-5 bottom-6 w-11 h-11 rounded-full bg-white/90 border shadow flex items-center justify-center hover:scale-105 transition">
+                <span className="text-xs font-bold text-black">LC</span>
+              </a>
+
