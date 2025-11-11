@@ -34,7 +34,7 @@ export default function HomePage() {
       </WavySection>
 
       {/* Skills */}
-      <WavySection id="skills" top bottom>
+      <WavySection id="skills" top bottom className="crosshatch-bg bg-white text-gray-800">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation">Skills</h2>
