@@ -37,7 +37,7 @@ export default function HomePage() {
       </section>
 
       {/* Skills */}
-      <section id="skills" className="py-12 md:py-20 relative overflow-hidden min-h-[600px]">
+      <section id="skills" className="py-12 md:py-20 relative overflow-hidden min-h-[700px]">
         <div className="container relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation text-black">Skills</h2>
@@ -45,11 +45,9 @@ export default function HomePage() {
           {/* Category-wise skill reference */}
           <SkillReference />
         </div>
-        {/* Background skill marquee */}
-        <div className="absolute inset-0 pointer-events-none opacity-25 z-0">
-          <div className="w-full h-full flex items-center justify-center">
-            <SkillLoop />
-          </div>
+        {/* Background skill marquee - fills entire section */}
+        <div className="absolute top-0 left-0 right-0 bottom-0 pointer-events-none opacity-30 z-0 flex items-center justify-center">
+          <SkillLoop />
         </div>
       </section>
 
