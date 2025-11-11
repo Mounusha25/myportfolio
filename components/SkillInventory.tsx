@@ -32,8 +32,9 @@ const iconifyIdMap: Record<string, string> = {
   Tableau: "simple-icons:tableau",
   "Power BI": "simple-icons:powerbi",
   Streamlit: "simple-icons:streamlit",
-  Matplotlib: "simple-icons:matplotlib",
-  Seaborn: "simple-icons:seaborn",
+  // Use Python glyphs for these (high contrast), per request
+  Matplotlib: "mdi:language-python",
+  Seaborn: "mdi:language-python",
   Excel: "vscode-icons:file-type-excel",
   "Statistical Modeling": "mdi:chart-box-outline",
   "Linear Optimization (CPLEX)": "mdi:chart-line-variant",
@@ -106,17 +107,7 @@ export default function SkillInventory() {
 
   const [selected, setSelected] = useState<{ name: string; category: CategoryKey } | null>(flatSkills[0] ?? null)
 
-  const stats = useMemo(() => {
-    if (!selected) return null
-    const s = selected.name.toLowerCase()
-    const projectsUsed = allProjects.filter(
-      (p) => p.tech.some((t) => t.toLowerCase().includes(s)) || p.tags.some((t) => t.toLowerCase().includes(s)) || p.description.toLowerCase().includes(s),
-    )
-    return {
-      projects: projectsUsed.length,
-      featured: projectsUsed.filter((p) => p.featured).length,
-    }
-  }, [selected])
+  // No project matching per request
 
   return (
     <section className="inv-root">
@@ -134,7 +125,10 @@ export default function SkillInventory() {
             >
               <div className="inv-icon" aria-hidden>
                 {icon.type === "iconify" ? (
-                  <img src={`https://api.iconify.design/${encodeURIComponent(icon.value)}.svg`} alt="" />
+                  <img
+                    src={`https://api.iconify.design/${encodeURIComponent(icon.value)}.svg${icon.value.startsWith('logos:') ? '' : '?color=%23cfd6ff'}`}
+                    alt=""
+                  />
                 ) : icon.type === "devicon" ? (
                   <i className={`${icon.value}`}></i>
                 ) : (
@@ -162,19 +156,13 @@ export default function SkillInventory() {
                 <span className="inv-v inv-preview-icon">
                   {(() => {
                     const icon = resolveIcon(selected.name)
-                    if (icon.type === "iconify") return <img src={`https://api.iconify.design/${encodeURIComponent(icon.value)}.svg`} alt="" />
+                    if (icon.type === "iconify") return (
+                      <img src={`https://api.iconify.design/${encodeURIComponent(icon.value)}.svg${icon.value.startsWith('logos:') ? '' : '?color=%23e5e7eb'}`} alt="" />
+                    )
                     if (icon.type === "devicon") return <i className={`${icon.value}`}></i>
                     return <span className="text-xs">{selected.name}</span>
                   })()}
                 </span>
-              </div>
-              <div className="inv-row">
-                <span className="inv-k">Projects Matched</span>
-                <span className="inv-v">{stats?.projects ?? 0}</span>
-              </div>
-              <div className="inv-row">
-                <span className="inv-k">Featured Matches</span>
-                <span className="inv-v">{stats?.featured ?? 0}</span>
               </div>
             </>
           )}
@@ -183,4 +171,3 @@ export default function SkillInventory() {
     </section>
   )
 }
-
