@@ -1,7 +1,7 @@
 "use client"
 import { HeroSection } from "@/components/hero-section"
 import { ExperienceCard } from "@/components/experience-card"
-import { AnimatedEducationCard } from "@/components/animated-education-card"
+import { FlipEducationCard } from "@/components/flip-education-card"
 import { SkillCard } from "@/components/skill-card"
 import { PublicationCard } from "@/components/publication-card"
 import { ContactCard } from "@/components/contact-card"
@@ -76,9 +76,9 @@ export default function HomePage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 hover-underline-animation text-black">Education</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
             {education.map((edu, index) => (
-              <AnimatedEducationCard key={`${edu.school}-${edu.startDate}`} education={edu} index={index} />
+              <FlipEducationCard key={`${edu.school}-${edu.startDate}`} education={edu} index={index} />
             ))}
           </div>
         </div>
