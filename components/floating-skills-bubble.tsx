@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useMemo, useRef } from "react"
 import { motion } from "framer-motion"
 
 interface Bubble {
@@ -83,6 +83,50 @@ export function FloatingSkillsBubble() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const bubblesRef = useRef<Bubble[]>([])
   const animationRef = useRef<number>()
+  const iconImagesRef = useRef<Record<string, HTMLImageElement>>({})
+
+  // Map of skill name -> Devicon SVG URL
+  const deviconUrlMap: Record<string, string> = useMemo(() => ({
+    Python: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    R: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg",
+    "Scikit-learn": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg",
+    TensorFlow: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+    PyTorch: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
+    SQL: "",
+    PySpark: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg",
+    Databricks: "",
+    "Apache Airflow": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-plain.svg",
+    MLflow: "",
+    Docker: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    "REST APIs": "",
+    MySQL: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    PostgreSQL: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    "SQL Server": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
+    SQLite: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
+    Supabase: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
+    MongoDB: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    Tableau: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tableau/tableau-original.svg",
+    "Power BI": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg",
+    Streamlit: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg",
+    Matplotlib: "",
+    Seaborn: "",
+    Excel: "",
+    "Statistical Modeling": "",
+    "Linear Optimization (CPLEX)": "",
+    "D3.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/d3js/d3js-original.svg",
+    Git: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    "API Integration": "",
+    "n8n Workflows": "",
+    Julia: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/julia/julia-original.svg",
+    "CI/CD pipelines": "",
+    Astro: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/astro/astro-original.svg",
+    "Time Series Analysis": "",
+    "Causal Inference": "",
+    "A/B Testing": "",
+    NLP: "",
+    "Recommendation Systems": "",
+    "LLM Integration": "",
+  }), [])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -90,6 +134,15 @@ export function FloatingSkillsBubble() {
 
     const ctx = canvas.getContext("2d")
     if (!ctx) return
+
+    // Preload Devicon images for supported skills
+    Object.entries(deviconUrlMap).forEach(([name, url]) => {
+      if (!url) return
+      const img = new Image()
+      img.crossOrigin = "anonymous"
+      img.src = url
+      iconImagesRef.current[name] = img
+    })
 
     const resizeCanvas = () => {
       canvas.width = canvas.offsetWidth
@@ -305,51 +358,22 @@ export function FloatingSkillsBubble() {
         ctx.lineWidth = 2
         ctx.stroke()
 
-        // Draw text with high contrast
-        ctx.fillStyle = "#000000"
-        ctx.font = "bold 11px Inter" // Slightly smaller font for smaller bubbles
-        ctx.textAlign = "center"
-        ctx.textBaseline = "middle"
-
-        // Add text shadow for readability
-        ctx.shadowColor = "rgba(255, 255, 255, 0.8)"
-        ctx.shadowBlur = 4
-        ctx.shadowOffsetX = 1
-        ctx.shadowOffsetY = 1
-
-        const text = bubble.skill
-        const maxWidth = bubble.radius * 1.6
-
-        // Smart text wrapping
-        const words = text.split(" ")
-        if (words.length > 1) {
-          const line1 = words[0]
-          const line2 = words.slice(1).join(" ")
-          const line1Width = ctx.measureText(line1).width
-          const line2Width = ctx.measureText(line2).width
-
-          if (line1Width <= maxWidth && line2Width <= maxWidth) {
-            ctx.fillText(line1, bubble.x, bubble.y - 6)
-            ctx.fillText(line2, bubble.x, bubble.y + 6)
-          } else {
-            ctx.font = "bold 9px Inter"
-            ctx.fillText(text, bubble.x, bubble.y)
-          }
+        // Draw devicon image if available, else fallback to text
+        const img = iconImagesRef.current[bubble.skill]
+        if (img && img.complete) {
+          const size = Math.min(bubble.radius * 1.4, 44)
+          ctx.drawImage(img, bubble.x - size / 2, bubble.y - size / 2, size, size)
         } else {
+          // Fallback label
+          ctx.fillStyle = "#000000"
+          ctx.font = "bold 11px Inter"
+          ctx.textAlign = "center"
+          ctx.textBaseline = "middle"
+          const text = bubble.skill
           const textWidth = ctx.measureText(text).width
-          if (textWidth <= maxWidth) {
-            ctx.fillText(text, bubble.x, bubble.y)
-          } else {
-            ctx.font = "bold 9px Inter"
-            ctx.fillText(text, bubble.x, bubble.y)
-          }
+          if (textWidth > bubble.radius * 1.6) ctx.font = "bold 9px Inter"
+          ctx.fillText(text, bubble.x, bubble.y)
         }
-
-        // Reset shadow
-        ctx.shadowColor = "transparent"
-        ctx.shadowBlur = 0
-        ctx.shadowOffsetX = 0
-        ctx.shadowOffsetY = 0
       })
 
       // Draw neon connections
@@ -416,7 +440,7 @@ export function FloatingSkillsBubble() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="w-full h-[500px] rounded-lg bg-gradient-to-br from-background to-muted/30 border overflow-hidden" // Increased height from 384px to 500px
+      className="w-full h-[500px] rounded-lg bg-gradient-to-br from-background to-muted/30 border border-black overflow-hidden" // Increased height from 384px to 500px and black border
     >
       <canvas ref={canvasRef} className="w-full h-full" style={{ background: "transparent" }} />
     </motion.div>

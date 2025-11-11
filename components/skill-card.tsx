@@ -81,6 +81,40 @@ function getSkillIcon(name: string): IconComp | null {
   return found?.Icon ?? null
 }
 
+// Map known skills/tools to Devicon classes
+function getDeviconClass(name: string): string | null {
+  const n = name.toLowerCase()
+  const map: Array<[RegExp, string]> = [
+    [/^python$/, "devicon-python-plain colored"],
+    [/^r$/, "devicon-r-plain colored"],
+    [/scikit|sklearn/, "devicon-scikitlearn-original colored"],
+    [/tensorflow/, "devicon-tensorflow-original colored"],
+    [/pytorch|torch/, "devicon-pytorch-original colored"],
+    [/^sql$/, null as unknown as string],
+    [/spark|pyspark/, "devicon-apachespark-original colored"],
+    [/airflow/, "devicon-apacheairflow-plain colored"],
+    [/docker/, "devicon-docker-plain colored"],
+    [/mysql/, "devicon-mysql-original colored"],
+    [/postgres/, "devicon-postgresql-plain colored"],
+    [/sql server|mssql|microsoft sql/, "devicon-microsoftsqlserver-plain colored"],
+    [/sqlite/, "devicon-sqlite-plain colored"],
+    [/supabase/, "devicon-supabase-plain colored"],
+    [/mongodb/, "devicon-mongodb-plain colored"],
+    [/tableau/, "devicon-tableau-plain colored"],
+    [/power\s*bi/, "devicon-powerbi-plain colored"],
+    [/streamlit/, "devicon-streamlit-plain colored"],
+    [/d3\.js|d3js|d3/, "devicon-d3js-plain colored"],
+    [/git/, "devicon-git-plain colored"],
+    [/julia/, "devicon-julia-plain colored"],
+    [/astro/, "devicon-astro-plain colored"],
+  ]
+
+  for (const [re, cls] of map) {
+    if (re.test(n)) return cls
+  }
+  return null
+}
+
 interface SkillCardProps {
   skillGroup: SkillGroup
   index: number
@@ -106,10 +140,15 @@ export function SkillCard({ skillGroup, index }: SkillCardProps) {
         <CardContent>
           <div className="flex flex-wrap gap-2">
             {skillGroup.skills.map((skill) => {
+              const devicon = getDeviconClass(skill)
               const Icon = getSkillIcon(skill)
               return (
                 <Badge key={skill} className="bg-white/60 text-black hover:bg-white/80 border border-purple-200/50 flex items-center gap-1.5 font-medium">
-                  {Icon ? <Icon className="w-3.5 h-3.5" /> : null}
+                  {devicon ? (
+                    <i className={`${devicon} text-[18px] leading-none`}></i>
+                  ) : Icon ? (
+                    <Icon className="w-3.5 h-3.5" />
+                  ) : null}
                   {skill}
                 </Badge>
               )
