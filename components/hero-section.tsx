@@ -12,18 +12,18 @@ export function HeroSection() {
 
   return (
     <section className="py-12 md:py-16">
-      <div className="container">
+      <div className="container overflow-visible">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="grid sm:grid-cols-2 gap-8 items-center"
+          className="grid sm:grid-cols-2 gap-8 items-center overflow-visible"
         >
           {/* Time pill removed */}
 
           {/* Left copy */}
-          <div className="space-y-4 order-2 md:order-1 text-center md:text-left overflow-hidden">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-black whitespace-nowrap">Vishal Lakshmi Narayanan</h1>
+          <div className="space-y-4 order-2 md:order-1 text-center md:text-left">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-black whitespace-nowrap overflow-visible">Vishal Lakshmi Narayanan</h1>
             <div className="mt-1 flex justify-center md:justify-start">
               <GlassFlipper />
             </div>
@@ -77,7 +77,7 @@ export function HeroSection() {
 
           {/* Right visual with lighting + floating socials */}
           <div className="order-1 md:order-2 flex justify-center md:justify-end">
-            <div className="relative w-full max-w-[280px] h-[280px] sm:max-w-[320px] sm:h-[320px] md:max-w-[400px] md:h-[420px] lg:max-w-[480px] lg:h-[500px]">
+            <div className="relative w-full max-w-[280px] h-[280px] sm:max-w-[320px] sm:h-[320px] md:max-w-[500px] md:h-[520px] lg:max-w-[600px] lg:h-[620px] xl:max-w-[700px] xl:h-[720px]">
               {/* Soft theme lighting */}
               <div
                 className="pointer-events-none absolute -inset-4 sm:-inset-5 md:-inset-6 rounded-[2rem]"
@@ -95,7 +95,7 @@ export function HeroSection() {
                 fill
                 priority
                 className="object-contain object-center scale-[1.08] drop-shadow-xl"
-                sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 400px, 480px"
+                sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 500px, (max-width: 1280px) 600px, 700px"
               />
               {/* Floating socials removed per request (restored bottom buttons) */}
             </div>
