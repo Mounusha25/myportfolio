@@ -89,7 +89,7 @@ export const allProjects: Project[] = [
     github: "https://github.com/VishalLakshmiNarayanan/Career-Pulse",
     date: "2025-11-01",
     featured: true,
-    image: "/images/projects/career-pulse.png",
+    image: "/images/projects/cpulse.png",
   },
   {
     slug: "tail-risk-management",
@@ -100,7 +100,7 @@ export const allProjects: Project[] = [
     github: "https://github.com/VishalLakshmiNarayanan/Tail-Risk-Analysis",
     date: "2025-10-01",
     featured: true,
-    image: "/images/projects/tail-risk.png",
+    image: "/images/projects/tailrisk.png",
   },
   {
     slug: "celestia-ai",
