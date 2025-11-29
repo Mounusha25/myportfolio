@@ -90,7 +90,7 @@ export const allProjects: Project[] = [
     demo: "https://pypi.org/project/tailrisk/",
     date: "2025-11-01",
     featured: true,
-    image: "/images/projects/tailrisk-lib.png",
+    image: "/images/projects/tailrisklib.png",
   },
   {
     slug: "career-pulse",
