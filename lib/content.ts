@@ -384,6 +384,20 @@ export const awards: Award[] = [
 
 export const certifications: Certification[] = [
   {
+    title: "Gemini for Data scientists and Analysts",
+    organization: "Google",
+    date: "2025-11-01",
+    credentialUrl: "https://www.skills.google/public_profiles/88828cfd-2add-4cf1-b27c-e7ce77848f50/badges/20406917?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share",
+    category: "data",
+  },
+  {
+    title: "Using BigQuery Machine Learning for Inference",
+    organization: "Google",
+    date: "2025-11-01",
+    credentialUrl: "https://www.skills.google/public_profiles/88828cfd-2add-4cf1-b27c-e7ce77848f50/badges/20527337?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share",
+    category: "data",
+  },
+  {
     title: "AI Agent Fundamentals",
     organization: "Databricks",
     date: "2025-09-01",
