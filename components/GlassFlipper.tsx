@@ -12,7 +12,7 @@ type Props = {
 }
 
 export default function GlassFlipper({
-  items = ["Data Scientist", "Data Engineer", "Data Analyst", "ML Engineer"],
+  items = ["Data Scientist", "Data Engineer", "Data Analyst", "ML Engineer", "Environmental Data Analyst"],
   intervalMs = 2000,
   className,
 }: Props) {
@@ -41,7 +41,7 @@ export default function GlassFlipper({
         <span className="hidden sm:inline text-black/70 font-medium">I'm a</span>
 
         {/* viewport keeps height fixed while text slides */}
-        <div className="relative h-8 sm:h-10 overflow-hidden min-w-[16ch] sm:min-w-[18ch]">
+        <div className="relative h-8 sm:h-10 overflow-hidden min-w-[20ch] sm:min-w-[26ch]">
           <AnimatePresence initial={false} mode="popLayout">
             <motion.div
               key={current}

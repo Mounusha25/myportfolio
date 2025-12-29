@@ -2,19 +2,17 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import HeaderMarquee from "./HeaderMarquee"
 
 const navigation = [
   { name: "Home", href: "#top" },
+  { name: "Education", href: "#education" },
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
-  { name: "Education", href: "#education" },
-  { name: "Awards", href: "#awards" },
-  { name: "Moments", href: "#moments" },
-  { name: "Publications", href: "#publications" },
   { name: "Certifications", href: "#certifications" },
   { name: "Contact", href: "#contact" },
 ]
@@ -33,29 +31,40 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full relative overflow-hidden header-marquee-pause border-b border-purple-200/50 bg-white/70 backdrop-blur-lg">
       {/* Marquee background behind content */}
       <HeaderMarquee />
-      <div className="relative z-10 container flex h-14 items-center">
-        <div className="mr-4 hidden md:flex">
-          <div className="mr-6 flex items-center space-x-2">
-            <span className="hidden font-bold sm:inline-block text-black">Vishal Lakshmi Narayanan</span>
-          </div>
-          <nav className="flex items-center space-x-2">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="nav-link text-black font-medium"
-                onClick={(e) => {
-                  if (item.href === "#top") {
-                    e.preventDefault()
-                    handleNavClick(item.href)
-                  }
-                }}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+      <div className="relative z-10 container flex h-14 items-center justify-between">
+        {/* Left side - Logo */}
+        <div className="hidden md:block">
+          <Link href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+            <Image
+              src="/images/web-logo.png"
+              alt="Mounusha Ram Metti"
+              width={120}
+              height={40}
+              className="h-8 w-auto hover:opacity-80 transition-opacity"
+            />
+          </Link>
         </div>
+
+        {/* Right side - Navigation */}
+        <nav className="hidden md:flex items-center space-x-2">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="nav-link text-black font-medium"
+              onClick={(e) => {
+                if (item.href === "#top") {
+                  e.preventDefault()
+                  handleNavClick(item.href)
+                }
+              }}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile menu button */}
         <Button
           variant="ghost"
           className="mr-2 px-0 text-base text-black hover:bg-purple-100/50 focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
@@ -64,10 +73,18 @@ export function Header() {
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           <span className="sr-only">Toggle Menu</span>
         </Button>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            <span className="font-bold text-black md:hidden">VLN</span>
-          </div>
+
+        {/* Mobile logo */}
+        <div className="flex-1 md:hidden">
+          <Link href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+            <Image
+              src="/images/web-logo.png"
+              alt="Mounusha Ram Metti"
+              width={100}
+              height={32}
+              className="h-6 w-auto hover:opacity-80 transition-opacity"
+            />
+          </Link>
         </div>
       </div>
       {mobileMenuOpen && (

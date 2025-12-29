@@ -5,6 +5,7 @@ import type { Certification } from "@/lib/content"
 import styles from "./CertificationBadges.module.css"
 
 const categoryLabels: Record<Certification["category"], string> = {
+  ml: "Machine Learning",
   ai: "AI & Agents",
   cloud: "Cloud",
   programming: "Programming",

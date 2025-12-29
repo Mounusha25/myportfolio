@@ -18,20 +18,20 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Vishal Lakshmi Narayanan - Data Science Graduate Student",
-    template: "%s | Vishal Lakshmi Narayanan",
+    default: "Mounusha Ram Metti - Data Science Graduate Student",
+    template: "%s | Mounusha Ram Metti",
   },
   description:
     "Data Science graduate student at Arizona State University focused on AI/ML, NLP, optimization, and applied research.",
   keywords: ["Data Science", "Machine Learning", "AI", "NLP", "Research", "ASU"],
-  authors: [{ name: "Vishal Lakshmi Narayanan" }],
-  creator: "Vishal Lakshmi Narayanan",
+  authors: [{ name: "Mounusha Ram Metti" }],
+  creator: "Mounusha Ram Metti",
   generator: 'v0.app',
   icons: {
     icon: [
-      { url: '/images/favicon.ico' },
-      { url: '/images/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/images/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/logo.png' },
+      { url: '/images/logo-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/images/logo-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
   },
 }
@@ -44,6 +44,42 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+        />
+        {/* Prevent MetaMask auto-injection errors */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                Object.defineProperty(window, 'ethereum', {
+                  get: function() { return undefined; },
+                  set: function() {},
+                  configurable: false
+                });
+
+                window.addEventListener('error', function(e) {
+                  if (e.message && (e.message.includes('MetaMask') || e.message.includes('ethereum') || e.message.includes('Failed to connect'))) {
+                    e.stopImmediatePropagation();
+                    return false;
+                  }
+                });
+
+                window.addEventListener('unhandledrejection', function(e) {
+                  if (e.reason && typeof e.reason === 'string' && (e.reason.includes('MetaMask') || e.reason.includes('ethereum'))) {
+                    e.preventDefault();
+                    return false;
+                  }
+                });
+
+                const originalError = console.error;
+                console.error = function(...args) {
+                  const msg = args.join(' ');
+                  if (!msg.includes('MetaMask') && !msg.includes('ethereum')) {
+                    originalError.apply(console, args);
+                  }
+                };
+              })();
+            `,
+          }}
         />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>

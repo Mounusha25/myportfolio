@@ -9,7 +9,8 @@ const categoryMeta: Record<string, { accent: string }> = {
   "Data Analytics & Visualization": { accent: "#fcd34d" },
   "Data Engineering & Infrastructure": { accent: "#fb7185" },
   "Web Development": { accent: "#38bdf8" },
-  "Development Tools & Automation": { accent: "#34d399" },
+  "Development Tools & Automation": { accent: "#f97316" },
+  "Sustainability & Environment": { accent: "#10b981" },
 }
 
 const skillIconData: Record<string, string> = {
@@ -51,6 +52,15 @@ const skillIconData: Record<string, string> = {
   Git: "https://skillicons.dev/icons?i=git",
   GitHub: "https://skillicons.dev/icons?i=github",
   Linux: "https://skillicons.dev/icons?i=linux",
+  "Google Analytics": "https://www.vectorlogo.zone/logos/google_analytics/google_analytics-icon.svg",
+  "Linear Optimization (CPLEX)": "https://cdn.worldvectorlogo.com/logos/ibm-2.svg",
+  "n8n Workflows": "https://avatars.githubusercontent.com/u/45487711?s=200&v=4",
+  "ArcGIS Pro": "https://www.vhv.rs/dpng/d/453-4534049_transparent-arcgis-logo-png-arcgis-pro-logo-png.png",
+  QGIS: "https://upload.wikimedia.org/wikipedia/commons/c/c2/QGIS_logo%2C_2017.svg",
+  "Google Earth Engine": "https://cdn-icons-png.flaticon.com/512/854/854878.png",
+  LCA: "https://cdn-icons-png.flaticon.com/512/3588/3588592.png",
+  "Natural Language Processing": "https://cdn-icons-png.flaticon.com/512/4712/4712109.png",
+  "REST APIs": "https://cdn-icons-png.flaticon.com/512/2165/2165004.png",
 }
 
 // Skills to exclude
@@ -60,11 +70,7 @@ const excludedSkills = [
   "Time Series Analysis",
   "Causal Inference",
   "A/B Testing",
-  "Natural Language Processing",
-  "Linear Optimization (CPLEX)",
   "MLflow",
-  "REST APIs",
-  "n8n Workflows",
   "CI/CD pipelines"
 ]
 
@@ -203,21 +209,55 @@ export default function SkillTree() {
     return result
   }, [])
 
+  // Group bubbles by category for legend
+  const categories = useMemo(() => {
+    const categoryMap = new Map<string, { color: string; count: number }>()
+    bubbles.forEach((bubble) => {
+      const existing = categoryMap.get(bubble.category)
+      if (existing) {
+        existing.count++
+      } else {
+        categoryMap.set(bubble.category, { color: bubble.color, count: 1 })
+      }
+    })
+    return Array.from(categoryMap.entries()).map(([name, data]) => ({
+      name,
+      color: data.color,
+      count: data.count,
+    }))
+  }, [bubbles])
+
   return (
     <section className="skill-bubble-container">
+      {/* Category Legend */}
+      <div className="category-legend">
+        {categories.map((category) => (
+          <div key={category.name} className="category-legend-item">
+            <div 
+              className="category-legend-dot" 
+              style={{ backgroundColor: category.color }}
+            />
+            <span className="category-legend-text">{category.name}</span>
+            <span className="category-legend-count">({category.count})</span>
+          </div>
+        ))}
+      </div>
+
       <div className="bubble-plot">
-        {bubbles.map((bubble) => {
+        {bubbles.map((bubble, index) => {
           const bubbleStyle = {
             "--bubble-color": bubble.color,
             "--bubble-size": `${bubble.size}px`,
             left: `${bubble.x}%`,
             top: `${bubble.y}%`,
+            "--float-delay": `${index * 0.1}s`,
+            "--float-duration": `${3 + (index % 3)}s`,
           } as CSSProperties
 
           return (
             <div
               key={`${bubble.category}-${bubble.skill}`}
-              className="skill-bubble"
+              className="skill-bubble floating"
               style={bubbleStyle}
               onMouseEnter={() => setHoveredBubble(`${bubble.category}-${bubble.skill}`)}
               onMouseLeave={() => setHoveredBubble(null)}
@@ -229,7 +269,9 @@ export default function SkillTree() {
               {hoveredBubble === `${bubble.category}-${bubble.skill}` && (
                 <div className="bubble-tooltip">
                   <div className="tooltip-skill">{bubble.skill}</div>
-                  <div className="tooltip-category">{bubble.category}</div>
+                  <div className="tooltip-category" style={{ color: bubble.color }}>
+                    {bubble.category}
+                  </div>
                 </div>
               )}
             </div>
