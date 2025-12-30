@@ -316,7 +316,7 @@ export const certifications: Certification[] = [
     title: "Data Visualization with Tableau",
     organization: "Tableau",
     date: "2025-12-30",
-    credentialUrl: "https://www.skills.google/public_profiles/88828cfd-2add-4cf1-b27c-e7ce77848f50/badges/20527337?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share",
+    credentialUrl: "https://coursera.org/share/1dbf5ec5228f54618e40eeb79bc5ca53",
     category: "data",
   },
   {
