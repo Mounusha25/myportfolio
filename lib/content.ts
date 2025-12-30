@@ -110,7 +110,7 @@ export const allProjects: Project[] = [
     description: "Developed a multimodal AI system that integrates vision and language models to perform real-time scene understanding and visual reasoning. Focused on efficient inference, model optimization, and modular deployment for scalable experimentation.",
     tech: ["Python", "PyTorch", "OpenCV", "llama.cpp", "Docker", "WebGL"],
     tags: ["AI Systems", "Computer Vision", "Deep Learning", "Vision-Language Models", "Model Optimization", "Inference Engineering"],
-    github: "https://github.com/VishalLakshmiNarayanan/Career-Pulse",
+    github: "https://github.com/Mounusha25/Optivision",
     demo: "https://pypi.org/project/tailrisk/",
     date: "2025-11-01",
     featured: true,
