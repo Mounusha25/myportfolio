@@ -165,6 +165,7 @@ const resolveCollisions = (
 
 export default function SkillTree() {
   const [hoveredBubble, setHoveredBubble] = useState<string | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
   // Memoize bubble calculations to ensure consistent server/client rendering
   const bubbles = useMemo(() => {
@@ -232,9 +233,14 @@ export default function SkillTree() {
       {/* Category Legend */}
       <div className="category-legend">
         {categories.map((category) => (
-          <div key={category.name} className="category-legend-item">
-            <div 
-              className="category-legend-dot" 
+          <div
+            key={category.name}
+            className={`category-legend-item ${selectedCategory === category.name ? 'selected' : ''}`}
+            style={selectedCategory === category.name ? { '--accent-color': category.color } as React.CSSProperties : {}}
+            onClick={() => setSelectedCategory(selectedCategory === category.name ? null : category.name)}
+          >
+            <div
+              className="category-legend-dot"
               style={{ backgroundColor: category.color }}
             />
             <span className="category-legend-text">{category.name}</span>
@@ -257,7 +263,7 @@ export default function SkillTree() {
           return (
             <div
               key={`${bubble.category}-${bubble.skill}`}
-              className="skill-bubble floating"
+              className={`skill-bubble floating ${selectedCategory === bubble.category ? 'highlighted' : selectedCategory ? 'dimmed' : ''}`}
               style={bubbleStyle}
               onMouseEnter={() => setHoveredBubble(`${bubble.category}-${bubble.skill}`)}
               onMouseLeave={() => setHoveredBubble(null)}
