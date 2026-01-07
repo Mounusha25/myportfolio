@@ -36,7 +36,7 @@ export function Header() {
         <div className="hidden md:block">
           <Link href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
             <Image
-              src="/images/my-new-logo.png"
+              src="/images/my-new-logo.png.png"
               alt="Mounusha Ram Metti"
               width={120}
               height={40}
