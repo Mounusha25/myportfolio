@@ -29,9 +29,9 @@ export const metadata: Metadata = {
   generator: 'v0.app',
   icons: {
     icon: [
-      { url: '/images/logo.png' },
-      { url: '/images/logo-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/images/logo-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/my-new-logo.png.png' },
+      { url: '/images/my-new-logo.png.png', sizes: '16x16', type: 'image/png' },
+      { url: '/images/my-new-logo.png.png', sizes: '32x32', type: 'image/png' },
     ],
   },
 }
