@@ -31,6 +31,16 @@ export function Header() {
       {/* Marquee background behind content */}
       <HeaderMarquee />
       <div className="relative z-10 container flex h-14 items-center justify-between">
+        {/* Mobile menu button - Left side on mobile */}
+        <Button
+          variant="ghost"
+          className="ml-2 px-0 text-base text-black hover:bg-purple-100/50 focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <span className="sr-only">Toggle Menu</span>
+        </Button>
+
         {/* Left side - Name/Logo */}
         <Link href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="font-bold text-lg hover:opacity-80 transition-opacity">
           <span className="hidden md:inline">Mounusha Ram Metti</span>
@@ -55,16 +65,6 @@ export function Header() {
             </Link>
           ))}
         </nav>
-
-        {/* Mobile menu button */}
-        <Button
-          variant="ghost"
-          className="mr-2 px-0 text-base text-black hover:bg-purple-100/50 focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          <span className="sr-only">Toggle Menu</span>
-        </Button>
       </div>
       {mobileMenuOpen && (
         <div className="relative overflow-hidden border-t border-purple-200/50 bg-white/80 md:hidden">
