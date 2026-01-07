@@ -33,11 +33,6 @@ export function Header() {
       <div className="relative z-10 container flex h-14 items-center justify-between">
         {/* Left side - Name/Logo and Mobile menu button */}
         <div className="flex items-center gap-3">
-          <Link href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="font-bold text-lg hover:opacity-80 transition-opacity">
-            <span className="hidden md:inline">Mounusha Ram Metti</span>
-            <span className="md:hidden">MR</span>
-          </Link>
-          
           <Button
             variant="ghost"
             className="px-0 text-base text-black hover:bg-purple-100/50 focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
@@ -46,6 +41,11 @@ export function Header() {
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             <span className="sr-only">Toggle Menu</span>
           </Button>
+          
+          <Link href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="font-bold text-lg hover:opacity-80 transition-opacity">
+            <span className="hidden md:inline">Mounusha Ram Metti</span>
+            <span className="md:hidden">MR</span>
+          </Link>
         </div>
 
         {/* Right side - Navigation */}
