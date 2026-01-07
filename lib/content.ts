@@ -128,17 +128,16 @@ export const allProjects: Project[] = [
     image: "/images/projects/rag.png",
   },
   {
-  slug: "emotisphere",
-  title: "EmotiSphere",
-  description:
-    "Built an adaptive conversational AI system that delivers personalized coaching using large language models, contextual memory, and real-time feedback loops. Emphasized low-latency interaction and user-centric analytics.",
-  tech: ["Python", "FastAPI", "React", "Groq", "ElevenLabs", "D3.js"],
-  tags: ["Conversational AI", "LLMs", "Personalization", "Human-AI Interaction", "NLP", "AI Systems", "Real-Time Analytics"],
-  github: "https://github.com/Mounusha25/EmotiSphere",
-  demo: "https://slidesageai.vercel.app/",          // <- your “Visit Website” link
-  date: "2025-09-01",
-  featured: true,                                   // <- ensures it appears in the carousel
-  image: "/images/projects/emotisphere.png",
+  slug: "resume-rank-audit",
+  title: "ResumeRank Audit",
+  description: "Developed a hybrid ML ranking system for resume–JD matching and conducted counterfactual fairness audits to analyze ranking stability, signal dominance, and bias sensitivity across semantic and structured features.",
+  tech: [ "Python", "Sentence-BERT", "scikit-learn", "TF-IDF", "pandas", "NumPy", "Streamlit", "Matplotlib", "Seaborn"],
+  tags: [ "Machine Learning", "NLP", "Ranking Systems", "Responsible AI", "Fairness Auditing", "Counterfactual Analysis", "Model Evaluation"],
+  github: "https://github.com/Mounusha25/resumerank_audit",
+  demo: "https://resumerankaudit.streamlit.app/",
+  date: "2026-01-01",
+  featured: true,
+  image: "/images/projects/resumerank_audit.png"
 },
   
 ]
