@@ -65,19 +65,6 @@ export function Header() {
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           <span className="sr-only">Toggle Menu</span>
         </Button>
-
-        {/* Mobile logo */}
-        <div className="flex-1 md:hidden">
-          <Link href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-            <Image
-              src="/images/web-logo.png"
-              alt="Mounusha Ram Metti"
-              width={100}
-              height={32}
-              className="h-6 w-auto hover:opacity-80 transition-opacity"
-            />
-          </Link>
-        </div>
       </div>
       {mobileMenuOpen && (
         <div className="relative overflow-hidden border-t border-purple-200/50 bg-white/80 md:hidden">
