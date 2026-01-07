@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import HeaderMarquee from "./HeaderMarquee"
@@ -32,18 +31,11 @@ export function Header() {
       {/* Marquee background behind content */}
       <HeaderMarquee />
       <div className="relative z-10 container flex h-14 items-center justify-between">
-        {/* Left side - Logo */}
-        <div className="hidden md:block">
-          <Link href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
-            <Image
-              src="/images/my-new-logo.png.png"
-              alt="Mounusha Ram Metti"
-              width={120}
-              height={40}
-              className="h-8 w-auto hover:opacity-80 transition-opacity"
-            />
-          </Link>
-        </div>
+        {/* Left side - Name/Logo */}
+        <Link href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="font-bold text-lg hover:opacity-80 transition-opacity">
+          <span className="hidden md:inline">Mounusha Ram Metti</span>
+          <span className="md:hidden">MR</span>
+        </Link>
 
         {/* Right side - Navigation */}
         <nav className="hidden md:flex items-center space-x-2">
