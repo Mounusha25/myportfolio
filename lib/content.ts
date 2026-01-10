@@ -110,6 +110,7 @@ export const allProjects: Project[] = [
     tech: ["Python", "PyTorch", "OpenCV", "llama.cpp", "Docker", "WebGL"],
     tags: ["AI Systems", "Computer Vision", "Deep Learning", "Vision-Language Models", "Model Optimization", "Inference Engineering"],
     github: "https://github.com/Mounusha25/Optivision",
+    demo: "https://optivision-edge-inference-system.onrender.com",
     date: "2025-11-01",
     featured: true,
     image: "/images/projects/optivision.png",
