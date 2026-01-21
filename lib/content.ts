@@ -81,6 +81,18 @@ export interface MediumArticle {
 
 export const allProjects: Project[] = [
     {
+    slug: "automl-tabular",
+    title: "AutoML Tabular",
+    description: "Built a production-style AutoML system for tabular data that performs profile-driven preprocessing, tolerance-based model selection, and performance-optimized hyperparameter search, generating fully explainable HTML reports for classification and regression tasks.",
+    tech: ["Python", "Optuna", "scikit-learn", "XGBoost", "LightGBM", "pandas", "NumPy", "Jinja2", "Matplotlib", "Seaborn", "Streamlit"],
+    tags: ["AutoML", "Machine Learning", "Tabular Data", "Hyperparameter Optimization", "Explainable AI", "Model Selection", "ML Engineering", "Performance Optimization"],
+    github: "https://github.com/Mounusha25/automl-tabular",
+    demo: "https://automl-tabular-demo.streamlit.app/",
+    date: "2026-01-20",
+    featured: true,
+    image: "/images/projects/automl_tabular.png"
+    },
+    {
     slug: "healthcare-nlp-assistant",
     title: "Healthcare NLP Assistant",
     description: "Developed an NLP-based clinical assistant to analyze and route medical queries using de-identified healthcare text. The system combines transformer-based intent classification with retrieval-augmented generation for evidence-aware responses.",
