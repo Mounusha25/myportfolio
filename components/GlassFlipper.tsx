@@ -12,7 +12,7 @@ type Props = {
 }
 
 export default function GlassFlipper({
-  items = ["Data Scientist", "Data Engineer", "Data Analyst", "ML Engineer", "Environmental Data Analyst"],
+  items = ["Data Scientist", "Data Analyst", "ML Engineer", "Environmental Data Analyst"],
   intervalMs = 2000,
   className,
 }: Props) {
