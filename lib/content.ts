@@ -138,18 +138,18 @@ export const allProjects: Project[] = [
     featured: true,
     image: "/images/projects/rag.png",
   },
-  {
-  slug: "resume-rank-audit",
-  title: "ResumeRank Audit",
-  description: "Developed a hybrid ML ranking system for resume–JD matching and conducted counterfactual fairness audits to analyze ranking stability, signal dominance, and bias sensitivity across semantic and structured features.",
-  tech: [ "Python", "Sentence-BERT", "scikit-learn", "TF-IDF", "pandas", "NumPy", "Streamlit", "Matplotlib", "Seaborn"],
-  tags: [ "Machine Learning", "NLP", "Ranking Systems", "Responsible AI", "Fairness Auditing", "Counterfactual Analysis", "Model Evaluation"],
-  github: "https://github.com/Mounusha25/resumerank_audit",
-  demo: "https://resumerankaudit.streamlit.app/",
-  date: "2026-01-01",
-  featured: true,
-  image: "/images/projects/resumerank_audit.png"
-},
+//   {
+//   slug: "resume-rank-audit",
+//   title: "ResumeRank Audit",
+//   description: "Developed a hybrid ML ranking system for resume–JD matching and conducted counterfactual fairness audits to analyze ranking stability, signal dominance, and bias sensitivity across semantic and structured features.",
+//   tech: [ "Python", "Sentence-BERT", "scikit-learn", "TF-IDF", "pandas", "NumPy", "Streamlit", "Matplotlib", "Seaborn"],
+//   tags: [ "Machine Learning", "NLP", "Ranking Systems", "Responsible AI", "Fairness Auditing", "Counterfactual Analysis", "Model Evaluation"],
+//   github: "https://github.com/Mounusha25/resumerank_audit",
+//   demo: "https://resumerankaudit.streamlit.app/",
+//   date: "2026-01-01",
+//   featured: true,
+//   image: "/images/projects/resumerank_audit.png"
+// },
   
 ]
 
