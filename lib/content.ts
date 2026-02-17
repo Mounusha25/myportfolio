@@ -98,7 +98,7 @@ export const allProjects: Project[] = [
     description: "Engineered a production-grade multi-agent retrieval-augmented generation (RAG) system for medical query answering with adaptive retrieval thresholds and parallel orchestration. The architecture integrates semantic search, utility-based agent scoring, and controlled LLM generation to deliver grounded, low-latency, and high-precision clinical responses.",
     tech: ["Python", "FastAPI", "ChromaDB", "OpenAI", "AWS", "Docker", "React"],
     tags: ["Multi-Agent Systems", "RAG", "LLMs", "Medical AI", "Vector Search", "Semantic Retrieval", "Distributed Systems", "AI Evaluation"],
-    github: "https://github.com/your-repo-link",
+    github: "https://github.com/rongeorge74/TrustMed-AI-Chatbot",
     date: "2024-02-01",
     featured: true,
     image: "/images/projects/trustmed-ai.png"
