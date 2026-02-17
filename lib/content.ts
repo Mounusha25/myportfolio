@@ -93,6 +93,18 @@ export const allProjects: Project[] = [
     image: "/images/projects/automl_tabular.png"
     },
     {
+    slug: "swiggy-sales-analytics",
+    title: "Swiggy Sales Analysis – End-to-End Analytics & Forecasting",
+    description: "Developed an end-to-end analytics and forecasting pipeline analyzing 197K+ food delivery transactions to uncover revenue drivers, customer behavior patterns, and geographic performance insights. Integrated statistical analysis, Pareto segmentation, and ARIMA time-series forecasting with an interactive Streamlit dashboard to deliver actionable, data-driven business recommendations.",
+    tech: ["Python", "Pandas", "NumPy", "SQL", "Statsmodels", "Streamlit", "Plotly", "Matplotlib"],
+    tags: ["Data Analytics", "Time Series Forecasting", "Business Intelligence", "ARIMA", "Customer Segmentation", "Pareto Analysis", "SQL Analytics", "Dashboarding"],
+    github: "https://github.com/Mounusha25/swiggy_analysis",
+    date: "2025-01-01",
+    featured: true,
+    image: "/images/projects/swiggy-analytics.png"
+    },
+
+    {
     slug: "trustmed-ai-multi-agent-rag",
     title: "TrustMed-AI Multi-Agent RAG System",
     description: "Engineered a production-grade multi-agent retrieval-augmented generation (RAG) system for medical query answering with adaptive retrieval thresholds and parallel orchestration. The architecture integrates semantic search, utility-based agent scoring, and controlled LLM generation to deliver grounded, low-latency, and high-precision clinical responses.",
@@ -371,9 +383,9 @@ export const certifications: Certification[] = [
 ]
 
 export const heroStats = [
-  { id: "projects",  label: "Projects",       rolling: ["15", "5"] }, 
+  { id: "projects",  label: "Projects",       rolling: ["15", "6"] }, 
   { id: "hackathons",label: "Hackathon Wins", value: "2" },
-  { id: "linkedin",  label: "Followers",      value: "2900+" },
+  { id: "linkedin",  label: "Followers",      value: "3k+" },
   { id: "stack",     label: "Tech Stack",     value: "40" },
   { id: "domains",   label: "Domains",        value: "6" },
 ] as const;
