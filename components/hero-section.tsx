@@ -114,7 +114,7 @@ export function HeroSection() {
                 transition={{ duration: 0.5 }}
               >
                 <Image
-                  src="/images/hero/myprofilepic.jpeg"
+                  src="/images/hero/linkedin_profile_photo.png"
                   alt="Mounusha Ram Metti portrait"
                   fill
                   priority
