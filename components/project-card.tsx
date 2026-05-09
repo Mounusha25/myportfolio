@@ -20,12 +20,15 @@ export function ProjectCard({ project, index = 0, active = false, animated = fal
   const content = (
     <Card className={`glass glass-hover h-full overflow-hidden ${active ? "ring-1 ring-purple-400/40" : ""}`}>
       {project.image && (
-        <div className="relative w-full overflow-hidden rounded-t-2xl" style={{ aspectRatio: '2.4 / 1' }}>
+        <div
+          className="relative w-full rounded-t-2xl bg-black/20"
+          style={{ aspectRatio: "2.4 / 1" }}
+        >
           <Image
-            src={project.image || "/placeholder.svg"}
+            src={project.image}
             alt={project.title}
             fill
-            className="object-contain transition-transform hover:scale-105"
+            className="object-contain p-2 transition-transform duration-500 md:hover:scale-[1.02]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority={active}
           />

@@ -81,6 +81,17 @@ export interface MediumArticle {
 
 export const allProjects: Project[] = [
     {
+    slug: "kubepulse-autonomous-kubernetes-ai",
+    title: "KubePulse: Autonomous Kubernetes AI Agent",
+    description: "Developed an autonomous AIOps agent for real-time Kubernetes pod anomaly detection and LLM-powered self-healing. Engineered a predictive hybrid ML pipeline utilizing LSTM for time-series forecasting and LightGBM for classification to predict memory outages before they occur. Integrated Google Gemini 1.5 Pro for dynamic remediation and built a purpose-built Go Prometheus exporter for custom metric autoscaling.",
+    tech: ["Node.js", "Python", "Go", "Kubernetes", "Prometheus", "TensorFlow", "LightGBM", "LangChain", "Google Gemini Pro", "Docker"],
+    tags: ["AIOps", "Machine Learning", "Time-Series Forecasting", "Anomaly Detection", "Kubernetes Monitoring", "Self-Healing Systems", "LLMs", "DevOps"],
+    github: "https://github.com/Mounusha25/Kube_Pulse",
+    date: "2026-05-09",
+    featured: true,
+    image: "/images/projects/kubepusle_cover.png"
+    },
+    {
     slug: "swiggy-market-intelligence",
     title: "Swiggy Market Intelligence Engine – Full-Stack Analytics Platform",
     description: "Built a full-stack market intelligence platform analyzing 197,430 Swiggy food delivery orders across India. Engineered three proprietary analytical frameworks — a City Expansion Opportunity Index (composite scoring model), a BCG-style Menu Intelligence Matrix, and a Restaurant Health Score viability index — to surface strategic growth signals. Integrated statistical hypothesis testing (Mann-Whitney U, ANOVA), ARIMA forecasting with MAPE validation, RFM segmentation, Pareto analysis, and a live SQL pipeline into an interactive 7-tab Streamlit dashboard with a downloadable 13-sheet Excel KPI report.",
