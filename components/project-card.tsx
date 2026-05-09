@@ -25,7 +25,7 @@ export function ProjectCard({ project, index = 0, active = false, animated = fal
             src={project.image || "/placeholder.svg"}
             alt={project.title}
             fill
-            className="object-cover transition-transform hover:scale-105"
+            className="object-contain transition-transform hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority={active}
           />
