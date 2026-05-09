@@ -81,15 +81,15 @@ export interface MediumArticle {
 
 export const allProjects: Project[] = [
     {
-    slug: "swiggy-sales-analytics",
-    title: "Swiggy Sales Analysis – End-to-End Analytics & Forecasting",
-    description: "Developed an end-to-end analytics and forecasting pipeline analyzing 197K+ food delivery transactions to uncover revenue drivers, customer behavior patterns, and geographic performance insights. Integrated statistical analysis, Pareto segmentation, and ARIMA time-series forecasting with an interactive Streamlit dashboard to deliver actionable, data-driven business recommendations.",
-    tech: ["Python", "Pandas", "NumPy", "SQL", "Statsmodels", "Streamlit", "Plotly", "Matplotlib"],
-    tags: ["Data Analytics", "Time Series Forecasting", "Business Intelligence", "ARIMA", "Customer Segmentation", "Pareto Analysis", "SQL Analytics", "Dashboarding"],
-    github: "https://github.com/Mounusha25/swiggy_analysis",
+    slug: "swiggy-market-intelligence",
+    title: "Swiggy Market Intelligence Engine – Full-Stack Analytics Platform",
+    description: "Built a full-stack market intelligence platform analyzing 197,430 Swiggy food delivery orders across India. Engineered three proprietary analytical frameworks — a City Expansion Opportunity Index (composite scoring model), a BCG-style Menu Intelligence Matrix, and a Restaurant Health Score viability index — to surface strategic growth signals. Integrated statistical hypothesis testing (Mann-Whitney U, ANOVA), ARIMA forecasting with MAPE validation, RFM segmentation, Pareto analysis, and a live SQL pipeline into an interactive 7-tab Streamlit dashboard with a downloadable 13-sheet Excel KPI report.",
+    tech: ["Python", "Pandas", "NumPy", "SQL", "SQLite", "Statsmodels", "scikit-learn", "Streamlit", "Plotly", "Matplotlib", "Seaborn", "openpyxl"],
+    tags: ["Data Analytics", "Time Series Forecasting", "Business Intelligence", "ARIMA", "Customer Segmentation", "Pareto Analysis", "SQL Analytics", "Dashboarding", "Composite Scoring", "BCG Matrix", "Statistical Testing"],
+    github: "https://gihttps://github.com/Mounusha25/swiggy_analysis",
     date: "2025-01-01",
     featured: true,
-    image: "/images/projects/swiggy-analytics.png"
+    image: "public/images/projects/swiggy-analytics.png"
     },
 
   {
