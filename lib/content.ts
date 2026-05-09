@@ -182,6 +182,19 @@ export const experiences: Experience[] = [
     title: "Data Science Researcher",
     company: "SSEBE, Arizona State University",
     location: "Arizona, United States",
+    startDate: "2025-10-15",
+    current: true,
+    description:
+      "Supported multidisciplinary research by designing and maintaining scalable data pipelines, analytics services, and interactive dashboards for large geospatial and sensor datasets, enabling data-driven decision-making in applied engineering research.",
+    achievements: [
+      "Built Python and SQL pipelines to process 70K+ IoT sensor records from 8 monitoring stations, creating clean, model-ready datasets for anomaly detection, forecasting, and environmental analysis.",
+      "Collaborated with researchers to translate analytical requirements into scalable dashboards and services, improving accessibility of insights for technical and non-technical stakeholders.",
+    ],
+  },
+  {
+    title: "Data Analyst Researcher",
+    company: "SSEBE, Arizona State University",
+    location: "Arizona, United States",
     startDate: "2025-02-15",
     current: true,
     description:
@@ -244,7 +257,7 @@ export const education: Education[] = [
     current: false,
     coursework: ["Programming and Data Structures", "Probability and Statistics", "Calculus", "Sustainable Engineering and Circular Economy"],
     stats: [
-      { label: "CGPA", value: "3.25 / 4.00" },
+      { label: "CGPA", value: "3.80 / 4.00" },
       { label: "Projects", value: "8" },
     ],
     image: "/images/education/iitkgp.jpg",
