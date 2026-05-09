@@ -20,7 +20,7 @@ export function ProjectCard({ project, index = 0, active = false, animated = fal
   const content = (
     <Card className={`glass glass-hover h-full overflow-hidden ${active ? "ring-1 ring-purple-400/40" : ""}`}>
       {project.image && (
-        <div className="relative h-48 w-full overflow-hidden rounded-t-2xl">
+        <div className="relative w-full overflow-hidden rounded-t-2xl" style={{ aspectRatio: '2.4 / 1' }}>
           <Image
             src={project.image || "/placeholder.svg"}
             alt={project.title}
