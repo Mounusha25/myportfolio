@@ -89,7 +89,7 @@ export const allProjects: Project[] = [
     github: "https://gihttps://github.com/Mounusha25/swiggy_analysis",
     date: "2025-01-01",
     featured: true,
-    image: "/images/projects/swiggy-analytics.png"
+    image: "/images/projects/swiggy_analytics.png"
     },
 
   {
