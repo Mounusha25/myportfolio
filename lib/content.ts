@@ -81,6 +81,18 @@ export interface MediumArticle {
 
 export const allProjects: Project[] = [
     {
+    slug: "swiggy-sales-analytics",
+    title: "Swiggy Sales Analysis – End-to-End Analytics & Forecasting",
+    description: "Developed an end-to-end analytics and forecasting pipeline analyzing 197K+ food delivery transactions to uncover revenue drivers, customer behavior patterns, and geographic performance insights. Integrated statistical analysis, Pareto segmentation, and ARIMA time-series forecasting with an interactive Streamlit dashboard to deliver actionable, data-driven business recommendations.",
+    tech: ["Python", "Pandas", "NumPy", "SQL", "Statsmodels", "Streamlit", "Plotly", "Matplotlib"],
+    tags: ["Data Analytics", "Time Series Forecasting", "Business Intelligence", "ARIMA", "Customer Segmentation", "Pareto Analysis", "SQL Analytics", "Dashboarding"],
+    github: "https://github.com/Mounusha25/swiggy_analysis",
+    date: "2025-01-01",
+    featured: true,
+    image: "/images/projects/swiggy-analytics.png"
+    },
+
+  {
     slug: "automl-tabular",
     title: "AutoML Tabular",
     description: "Built a production-style AutoML system for tabular data that performs profile-driven preprocessing, tolerance-based model selection, and performance-optimized hyperparameter search, generating fully explainable HTML reports for classification and regression tasks.",
@@ -92,17 +104,7 @@ export const allProjects: Project[] = [
     featured: true,
     image: "/images/projects/automl_tabular.png"
     },
-    {
-    slug: "swiggy-sales-analytics",
-    title: "Swiggy Sales Analysis – End-to-End Analytics & Forecasting",
-    description: "Developed an end-to-end analytics and forecasting pipeline analyzing 197K+ food delivery transactions to uncover revenue drivers, customer behavior patterns, and geographic performance insights. Integrated statistical analysis, Pareto segmentation, and ARIMA time-series forecasting with an interactive Streamlit dashboard to deliver actionable, data-driven business recommendations.",
-    tech: ["Python", "Pandas", "NumPy", "SQL", "Statsmodels", "Streamlit", "Plotly", "Matplotlib"],
-    tags: ["Data Analytics", "Time Series Forecasting", "Business Intelligence", "ARIMA", "Customer Segmentation", "Pareto Analysis", "SQL Analytics", "Dashboarding"],
-    github: "https://github.com/Mounusha25/swiggy_analysis",
-    date: "2025-01-01",
-    featured: true,
-    image: "/images/projects/swiggy-analytics.png"
-    },
+
 
     {
     slug: "trustmed-ai-multi-agent-rag",
